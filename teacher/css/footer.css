@@ -1,0 +1,35 @@
+#footer{
+	margin-top:15px;
+	/*height:100px;*/
+	padding-left:300px;
+}
+#footer>p{
+	float:left;
+	padding:0;
+	margin:0;
+	margin-right:30px;
+	width:80px;
+	height:80px;
+	background:#cfc;
+}
+#footer>ul{
+	margin:0 30px;
+	display:block;
+	width:150px;
+	height:100px;
+	float:left;
+}
+#footer .s{
+	width:290px;
+}
+#footer>ul>li{
+	overflow:hidden;
+	margin-top:3px;
+}
+#footer>ul li:first-child{
+	margin-bottom:10px;
+	font-size:14px;
+}
+#footer>ul li:not(:first-child){
+	margin-left:10px;
+}

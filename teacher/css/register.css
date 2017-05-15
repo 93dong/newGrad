@@ -1,0 +1,50 @@
+@font-face {
+  font-family: 'mySize';
+  url:'res/font2.ttf';
+}
+#main{
+  width:80%;
+  min-height:500px;
+  background: #eeeeee;
+  margin: auto;
+}
+#main:before{
+  content: '';
+  display:table;
+}
+.adduser{
+  width:60%;
+  min-height:400px;
+  margin: auto;
+  margin-top: 50px;
+  font-size: 20px;
+}
+/*.adduser:after{*/
+  /*content: '';*/
+  /*display: block;*/
+  /*clear: both;*/
+/*}*/
+.imgShow{
+  float: left;
+  margin-right: 100px;
+  width:200px;
+  height:200px;
+  display:inline-block;
+}
+.adduser ul li{
+  margin-top: 25px;
+}
+
+.submitBtn{
+  float: right;
+  position: relative;
+  top: 125px;
+  font-size: 16px;
+}
+.submitBtn input{
+  width:70px;
+  height:30px;
+  background-color:#AB7994;
+  border-radius: 5%;
+  margin-right: 10px;
+}

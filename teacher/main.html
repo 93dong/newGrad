@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Document</title>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/footer.css">
+		<link rel="stylesheet" href="css/main.css"/>
+		<style>
+			#updatedetail ul li:nth-child(even) span{
+				color:dodgerblue;
+				font-size: 12px;
+				font-weight: bold;
+				cursor: pointer;
+			}
+			#updatedetail i{
+				font-style: normal;
+			}
+			.affirmBtn{
+				float: right;
+				margin-right: 20%;
+				margin-top: -8%;
+			}
+			.affirmBtn input{
+				width:100px;
+				height:30px;
+				font-size: 18px;
+				line-height: 30px;
+				font-weight: bold;
+				background: #AB7994;
+				color:#fff;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="header"></header>
+		<div id='main'>
+			<div class='navigation'>
+				<ul>
+					<li id="allPage" class="navsel" data-name="all"><a href="#" >所有</a></li>
+					<li id="searchPage"><a href="#">搜索</a></li>
+					<li id="addPage"><a href="#">添加</a></li>
+					<li id="updatePage"  data-name="update"><a href="#">修改</a></li>
+				</ul>
+			</div>
+			<div id="showStage" class="subject">
+				<div class="userdetail">
+					<div class="imgShow">
+					</div>
+					<form id="updatedetail" method="post" action="data/add.php" enctype="multipart/form-data">
+						<ul>
+							<li>姓名：</li>
+							<li>
+								<i></i>
+								<span class="glyphicon glyphicon-pencil" data-name="tname"></span>
+							</li>
+							<li>民族：</li>
+							<li>
+								<i></i>
+								<span class="glyphicon glyphicon-pencil" data-name="tnation"></span>
+							</li>
+							<li>性别：</li>
+							<li>
+								<i></i>
+								<span class="glyphicon glyphicon-pencil" data-name="tgender"></span>
+							</li>
+							<li>年龄：</li>
+							<li>
+								<i>fgrg</i>
+								<span class="glyphicon glyphicon-pencil" data-name="tage"></span>
+							</li>
+							<li>院系：</li>
+							<li>
+								<i></i>
+								<span class="glyphicon glyphicon-pencil" data-name="tyear"></span>
+							</li>
+							<li>任教年限：</li>
+							<li>
+								<i></i>
+								<span class="glyphicon glyphicon-pencil" data-name="tyear"></span>
+							</li>
+							<li>联系方式：</li>
+							<li>
+								<i></i>
+								<span class="glyphicon glyphicon-pencil" data-name="tphone"></span>
+							</li>
+							<li>毕业院校：</li>
+							<li>
+								<i></i>
+								<span class="glyphicon glyphicon-pencil" data-name="gradSchool"></span>
+							</li>
+						</ul>
+					</form>
+				</div>
+				<p class="affirmBtn"><input type="submit" form="updatedetail" value="确定"/></p>
+			</div>
+		</div>
+		<footer id="footer"></footer>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script src="js/head.js"></script>
+		<script src="js/main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/register.css"/>
+  <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+<header id="header"></header>
+<div id="main">
+  <div class="adduser">
+    <p data-name="showmessage">
+
+    </p>
+    <form id="adduser">
+      <ul>
+        <li>
+          <label for="unumber" >帐号：</label><input id="unumber" type="text" name="name" required autofocus />
+          <span></span>
+        </li>
+        <li>
+          <label for="uname" >姓名：</label><input id="uname" type="text" name="name" required minlength="2" autofocus/>
+          <span></span>
+        </li>
+
+        <li>
+          <label for="upwd">密码：</label><input id="upwd" type="password" name="age" min="18" max="80"/>
+          <span></span>
+        </li>
+      </ul>
+    </form>
+
+    <p class="submitBtn"><input id="registerBtn" type="button" form="adduser" value="提交"/>已有帐号<a href="#">返回登录<a/></p>
+  </div>
+</div>
+<footer id="footer"></footer>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/head.js"></script>
+<script>
+  $(document).ready(function(){
+    $('#upic').change(function(){
+      var fil=this.files;
+      for(var i=0;i<fil.length;i++){
+        reads(fil[i]);
+      }
+    });
+  });
+  function reads(fil){
+    var reader=new FileReader();
+    reader.readAsDataURL(fil);
+    reader.onload=function(){
+      $('.imgShow').html(`<img src="${reader.result}" alt=""/>`);
+    }
+  }
+  $('#registerBtn').on('click',function(){
+    var unumber=$('#unumber').val();
+    var uname=$('#uname').val();
+    var upwd=$('#upwd').val();
+    $.ajax({
+      url:'data/useradd.php',
+      data:`name=${uname}&number=${unumber}&pwd=${upwd}`,
+      success:function(data){
+        if (data.code===1){
+          $('p[data-name="showmessage"]').html('注册成功，请<a href="#">返回登录</a>');
+        }
+      }
+    })
+  });
+  $('.submitBtn').on('click','a',function(){
+    location.href='login.html';
+  })
+</script>
+
+</body>
+</html>

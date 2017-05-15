@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Document</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/main.css"/>
+  <style>
+    .tabledetail{
+      width:80%;
+      margin: auto;
+      border:1px solid #aaa;
+    }
+    .tabledetail td{
+      height:50px;
+      padding-left: 50px;
+    }
+    .tdimg div{
+      width:80%;
+      height:90%;
+    }
+    .tabledetail tr>td:not(:first-child) {
+      width:35%;
+    }
+  </style>
+</head>
+<body>
+<header id="header"></header>
+<div id='main'>
+  <div class='navigation'>
+    <ul>
+      <li id="allPage" class="navsel" ><a href="#" >所有</a></li>
+      <li id="searchPage" ><a href="#">搜索</a></li>
+      <li id="addPage" ><a href="#">添加</a></li>
+      <li id="deletePage" ><a href="#">删除</a></li>
+      <li id="updatePage" ><a href="#">修改</a></li>
+    </ul>
+  </div>
+  <div id="showStage" class="subject">
+    <div class="tdetail">
+      <table class="tabledetail">
+        <tbody>
+        <tr>
+          <td class="tdimg" rowspan="3">
+            <div><img src="img/lingwan.jpg" alt=""/></div>
+          </td>
+          <td>姓名：</td>
+          <td>啦啦啦</td>
+        </tr>
+        <tr>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td colspan="2">1</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<footer id="footer"></footer>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/head.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
