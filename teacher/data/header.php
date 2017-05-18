@@ -15,7 +15,7 @@
 			?>
 			</li>
 			<li class="personCenter"><a href="">个人中心</a></li>
-			<li class=""><a href="">系统设置</a></li>
+			<li class=""><a href="sittings.html">系统设置</a></li>
 			<li class="quit"><a href="#">退出</a></li>
 		</ul>
 	</div>
