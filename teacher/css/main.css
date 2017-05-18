@@ -44,7 +44,16 @@ body{
 a{
   color: black;
 }
-
+.title{
+  width:98%;
+  height:30px;
+  margin:10px;
+  font-size: 18px;
+  line-height: 30px;
+  color:#6c8fad;
+  font-weight: bold;
+  border-bottom: 3px solid #AB7994;
+}
 /*左侧导航栏*/
 .navigation{
   width:185px;
@@ -277,7 +286,7 @@ a{
 .submitBtn{
   float: right;
   margin-right: 10%;
-  margin-top: 5%;
+  margin-top: -11%;
 }
 .submitBtn input{
   width:100px;

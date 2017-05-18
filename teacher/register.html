@@ -8,30 +8,45 @@
   <link rel="stylesheet" href="css/footer.css">
   <link rel="stylesheet" href="css/register.css"/>
   <link rel="stylesheet" href="css/main.css"/>
+  <link rel="stylesheet" href="css/index.css"/>
 </head>
 <body>
 <header id="header"></header>
 <div id="main">
   <div class="adduser">
-    <p data-name="showmessage">
-
+    <p class="title" style="font-size: 48px;color: #333333;height: 65px;" >
+          用户注册
     </p>
     <form id="adduser">
       <ul>
         <li>
-          <label for="unumber" >帐号：</label><input id="unumber" type="text" name="name" required autofocus />
+          <label for="teacherId" >教师Id：</label><input id="teacherId" type="text" name="teacherId" required autofocus />
           <span></span>
         </li>
         <li>
-          <label for="uname" >姓名：</label><input id="uname" type="text" name="name" required minlength="2" autofocus/>
+          <label for="unumber" >帐&nbsp;&nbsp;&nbsp;号：</label><input id="unumber" type="text" name="name" required />
+          <span></span>
+        </li>
+        <li>
+          <label for="uname" >用户名：</label><input id="uname" type="text" name="name" required minlength="2" />
           <span></span>
         </li>
 
         <li>
-          <label for="upwd">密码：</label><input id="upwd" type="password" name="age" min="18" max="80"/>
+          <label for="upwd">密&nbsp;&nbsp;&nbsp;码：</label><input id="upwd" type="password" name="age" min="18" max="80"/>
           <span></span>
         </li>
+        <li>
+          <input id="toBe" type="checkbox" name="admin" /><label for="toBe">是否申请成为管理员</label>
+          <span></span>
+        </li>
+        <li>
+          <p class="rdo">
+            <span>验证码：</span><input id="test" type="text" style="width:70px;"/>  &nbsp;  &nbsp;<img src="data/test.php" alt=""/><a href="#" id="change">看不清？换一张</a>
+          </p>
+        </li>
       </ul>
+
     </form>
 
     <p class="submitBtn"><input id="registerBtn" type="button" form="adduser" value="提交"/>已有帐号<a href="#">返回登录<a/></p>
