@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>招聘信息页</title>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/footer.css">
+		<link rel="stylesheet" href="css/main.css"/>
+		<style>
+			.recruit-detail{
+				width:93%;
+				padding: 10px 30px;
+				max-height:500px;
+				overflow-y: scroll;
+			}
+			.recruits{
+				text-decoration: none;;
+			}
+			.recruits span{
+				display: inline-block;
+			}
+			.publishMessage{
+				width:80%;
+				border-bottom: 2px solid #aaaaaa;
+				padding: 10px;
+			}
+			.recruitTitle{
+				width: 200px;
+				padding: 10px;
+			}
+			.publisherImg{
+				width:50px;
+				height: 50px;
+				border-radius: 50%;
+				overflow: hidden;
+			}
+			.publisher , .publishTime{
+				margin-left: 50px;
+			}
+			.applyImg , .applyName , .applyDepartment , .applyTime {
+				margin-left: 30px;
+			}
+			.applyBtn p{
+				margin: 0 5px;
+				float: right;
+				padding: 5px 10px;
+				border-radius: 5px;
+				background: #6c8fad;
+				color: #F1F1F1;
+				display: inline-block;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="header"></header>
+		<div id='main'>
+			<div class='navigation'>
+				<ul>
+					<!-- 首页展示个人信息-->
+					<li><a href="department.html" >系别信息</a></li>
+					<li><a href="main.html">教师管理</a></li>
+					<li class="navsel"><a href="recruit.html">招聘信息</a></li>
+				</ul>
+			</div>
+			<div id="showStage" class="subject">
+				<p class="title">招聘信息</p>
+				<div class="recruit-detail">
+					<ul class="recruits">
+						<li class="publishMessage">
+							<img class="publisherImg" src="123.png" alt=""/>
+							<span class="publisher">casfs</span>
+							<span class="publishTime">asdasd</span>
+						</li>
+						<li class="jobDescription">
+							<p class="recruitTitle">职位介绍:</p>
+							<p class="recruitText" style="margin-left: 40px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aut deleniti dolor ea eius eveniet expedita fuga illo labore maxime minus mollitia nobis non officia perspiciatis repellendus rerum sed, voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aut deleniti dolor ea eius eveniet expedita fuga illo labore maxime minus mollitia nobis non officia perspiciatis repellendus rerum sed, voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aut deleniti dolor ea eius eveniet expedita fuga illo labore maxime minus mollitia nobis non officia perspiciatis repellendus rerum sed, voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aut deleniti dolor ea eius eveniet expedita fuga illo labore maxime minus mollitia nobis non officia perspiciatis repellendus rerum sed, voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aut deleniti dolor ea eius eveniet expedita fuga illo labore maxime minus mollitia nobis non officia perspiciatis repellendus rerum sed, voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aut deleniti dolor ea eius eveniet expedita fuga illo labore maxime minus mollitia nobis non officia perspiciatis repellendus rerum sed, voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aut deleniti dolor ea eius eveniet expedita fuga illo labore maxime minus mollitia nobis non officia perspiciatis repellendus rerum sed, voluptate.</p>
+						</li>
+						<li class="jobRequirements">
+							<p class="recruitTitle">职位要求:</p>
+							<dl style="margin-left: 40px;">
+								<dt class="jobName">前端工程师</dt>
+								<dd class="jobNeed">会js</dd>
+							</dl>
+						</li>
+						<li class="applyPerson">
+							<p class="recruitTitle">申请人信息</p>
+							<ul class="applyMessage" style="margin-left: 10px;">
+								<li>
+									<span class="applyImg"><img src="123456.png" alt=""/></span>
+									<span class="applyName">dsadsadas</span>
+									<span class="applyDepartment">dsadasdsa</span>
+									<span class="applyTime">dasdasdas</span>
+								</li>
+								<li>
+									<span class="applyImg"><img src="123456.png" alt=""/></span>
+									<span class="applyName">dsadsadas</span>
+									<span class="applyDepartment">dsadasdsa</span>
+									<span class="applyTime">dasdasdas</span>
+								</li>
+								<li>
+									<span class="applyImg"><img src="123456.png" alt=""/></span>
+									<span class="applyName">dsadsadas</span>
+									<span class="applyDepartment">dsadasdsa</span>
+									<span class="applyTime">dasdasdas</span>
+								</li>
+
+							</ul>
+						</li>
+						<li class="applyBtn">
+
+							<p class="deleteDetail">删除该招聘信息</p> <!-- 管理员显示-->
+							<p class="apply">申请</p>  <!-- 用户显示-->
+						</li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+		<footer id="footer"></footer>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script src="js/head.js"></script>
+	</body>
+</html>
