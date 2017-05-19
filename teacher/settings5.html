@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>系统设置页</title>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/footer.css">
+		<link rel="stylesheet" href="css/main.css"/>
+		<style>
+			.title{
+				width:98%;
+				height:30px;
+				margin:10px;
+				font-size: 18px;
+				line-height: 30px;
+				color:#6c8fad;
+				font-weight: bold;
+				border-bottom: 3px solid #AB7994;
+			}
+			.applyList{
+				width:90%;
+				margin-top: 30px;
+			}
+			.applyList td ,th{
+				height:40px;
+				line-height: 40px;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="header"></header>
+		<div id='main'>
+			<div class='navigation'>
+				<ul>
+					<li><a href="homePage.html">首页</a></li>
+					<li class="navsel" data-name="personMessage"><a href="#" >个人信息</a></li>
+					<li data-name="changeMessage"><a href="#">修改个人信息</a></li>
+					<li data-name="changePwd"><a href="#">修改密码</a></li>
+					<!-- 管理员可见-->
+					<li data-name="showManager"><a href="#">申请人员</a></li>
+				</ul>
+			</div>
+			<div id="showStage" class="subject">
+				<p class="title">个人信息</p>
+				<table class="applyList" >
+					<thead>
+
+					<th>系部名称</th>
+					<th>所属院系</th>
+					<th>下设专业</th> <!-- 需溢出显示...-->
+					<th>学生人数</th>
+					<th>教师人数</th>
+					<th>操作</th>
+					</thead>
+					<tbody>
+					<tr>
+						<td>计算机系</td>
+						<td>长治学院</td>
+						<td>网络工程</td>
+						<td>159人</td>
+						<td>561人</td>
+						<td  class="operation">[同意][拒绝]</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<footer id="footer"></footer>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script src="js/head.js"></script>
+		<script>
+			$(".navigation").on("click","li",function(){
+				$(this).addClass("navsel");
+				$(this).siblings("li").removeClass("navsel");
+				var titleText = $(this).text();
+				$(".title").text(titleText);
+			})
+		</script>
+	</body>
+</html>
