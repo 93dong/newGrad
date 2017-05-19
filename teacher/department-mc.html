@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>系别详情2级</title>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/footer.css">
+		<link rel="stylesheet" href="css/main.css"/>
+		<style>
+			.title{
+				width:98%;
+				height:30px;
+				margin:10px;
+				font-size: 18px;
+				line-height: 30px;
+				color:#6c8fad;
+				font-weight: bold;
+				border-bottom: 3px solid #AB7994;
+			}
+			.departmentDetail{
+				width:650px;
+				height: 350px;
+				position:absolute;
+				top:50%;
+				left:25%;
+				transform:translate(-50%,-50%);
+			}
+			.departmentDetail:after{
+				content: "";
+				display: block;
+				clear: both;
+			}
+			.departmentDetail li{
+				float: left;
+				width:40%;
+				margin-left: 10%;
+				height:50px;
+				line-height: 50px;
+			}
+			.departmentDetail li:nth-child(odd){
+				text-align: right;
+			}
+			.applyBtn p{
+				margin: 0 5px;
+				float: right;
+				padding: 5px 10px;
+				border-radius: 5px;
+				background: #6c8fad;
+				color: #F1F1F1;
+				display: inline-block;
+				cursor: pointer;
+			}
+			.applyBtn:before{
+				content: '';
+				display: block;
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="header"></header>
+		<div id='main'>
+			<div class='navigation'>
+				<ul>
+					<!-- 首页展示个人信息-->
+					<li class="navsel"><a href="department.html" >系别信息</a></li>
+					<li><a href="main.html">教师管理</a></li>
+					<li><a href="recruit.html">招聘信息</a></li>
+				</ul>
+			</div>
+			<div id="showStage" class="subject" style="position:relative; ">
+				<p class="title" data-name="departmentName">计算机系</p>
+				<ul class="departmentDetail">
+					<li>系部名称：</li>
+					<li class="departmentName">计算机系</li>
+					<li>所属院校：</li>
+					<li class="schoolName">长治学院</li>
+					<li>下设专业：</li>
+					<li class="majorName">网络工程</li>
+					<li>学生人数：</li>
+					<li class="studentNum">159人</li>
+					<li>教师人数：</li>
+					<li><span class="teacherNum">1325人</span><a href="main.html">[详情]</a></li>
+					<li></li>
+				</ul>
+				<!-- 管理员可见-->
+				<ul style="position: absolute;bottom:100px;right:200px">
+					<li class="applyBtn"><p>修改</p><p>删除</p></li>
+				</ul>
+			</div>
+		</div>
+		<footer id="footer"></footer>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script src="js/head.js"></script>
+	</body>
+</html>

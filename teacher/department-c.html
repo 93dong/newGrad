@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>系别信息</title>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/footer.css">
+		<link rel="stylesheet" href="css/main.css"/>
+		<style>
+			#updatedetail ul li:nth-child(even) span{
+				color:dodgerblue;
+				font-size: 12px;
+				font-weight: bold;
+				cursor: pointer;
+			}
+			#updatedetail i{
+				font-style: normal;
+			}
+			.affirmBtn{
+				float: right;
+				margin-right: 20%;
+				margin-top: -8%;
+			}
+			.affirmBtn input{
+				width:100px;
+				height:30px;
+				font-size: 18px;
+				line-height: 30px;
+				font-weight: bold;
+				background: #AB7994;
+				color:#fff;
+			}
+			.title{
+				width:98%;
+				height:30px;
+				margin:10px;
+				font-size: 18px;
+				line-height: 30px;
+				color:#6c8fad;
+				font-weight: bold;
+				border-bottom: 3px solid #AB7994;
+			}
+			.departmentTitle{
+				height:120px;
+				line-height: 120px;
+				text-align: center;
+			}
+			.departmentMessage{
+				margin:20px 30px;
+			}
+			.departmentMessage a{
+				color:dodgerblue;
+			}
+			.departmentMessage a:hover{
+				color: #AB7994;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="header"></header>
+		<div id='main'>
+			<div class='navigation'>
+				<ul>
+					<!-- 首页展示个人信息-->
+					<li class="navsel"><a href="department.html" >系别信息</a></li>
+					<li><a href="main.html">教师管理</a></li>
+					<li><a href="recruit.html">招聘信息</a></li>
+				</ul>
+			</div>
+			<div id="showStage" class="subject">
+				<p class="title">系别信息</p>
+				<h1 class="departmentTitle">计算机系</h1>
+				<p class="departmentMessage">长治学院计算机系成立于1995年。现在设有计算机科学与技术、网络工程两个本科专业,在校学生900余人。 计算机系秉承“学以致用,服务社会”的办学理念,坚持科学发展,...
+					<a href="123">[详情]</a></p>
+			</div>
+		</div>
+		<footer id="footer"></footer>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script src="js/head.js"></script>
+	</body>
+</html>

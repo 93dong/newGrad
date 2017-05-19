@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>修改个人信息</title>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/footer.css">
+		<link rel="stylesheet" href="css/main.css"/>
+		<style>
+			.title{
+				width:98%;
+				height:30px;
+				margin:10px;
+				font-size: 18px;
+				line-height: 30px;
+				color:#6c8fad;
+				font-weight: bold;
+				border-bottom: 3px solid #AB7994;
+			}
+			.applyBtn p{
+				margin: 0 5px;
+				float: right;
+				padding: 5px 10px;
+				border-radius: 5px;
+				background: #6c8fad;
+				color: #F1F1F1;
+				display: inline-block;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="header"></header>
+		<div id='main'>
+			<div class='navigation'>
+				<ul>
+					<li><a href="homePage.html">首页</a></li>
+					<li class="navsel" data-name="personMessage"><a href="#" >个人信息</a></li>
+					<li data-name="changeMessage"><a href="#">修改个人信息</a></li>
+					<li data-name="changePwd"><a href="#">修改密码</a></li>
+					<!-- 管理员可见-->
+					<li data-name="showManager"><a href="#">申请人员</a></li>
+				</ul>
+			</div>
+			<div id="showStage" class="subject">
+				<p class="title">个人信息</p>
+				<div class="userdetail">
+					<div class="imgShow">
+						<img src="" alt=""/>
+					</div>
+					<form id="updatedetail" method="post" action="data/add.php" enctype="multipart/form-data">
+						<ul class="detaillist">
+							<li>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</li>
+							<li>
+								<i>${detail.tname}</i>
+								<input type="text" name="tname" class="modification" autofocus>
+								<span class="clickupdate glyphicon glyphicon-pencil"></span>
+							</li>
+							<li>民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族：</li>
+							<li>
+								<i>${detail.tnation}</i>
+								<input type="text" name="tnation" class="modification" autofocus>
+								<span class="clickupdate glyphicon glyphicon-pencil"></span>
+							</li>
+							<li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</li>
+							<li>
+								<i>${detail.tgender}</i>
+								<input type="text" name="tgender" class="modification" autofocus>
+								<span class="clickupdate glyphicon glyphicon-pencil"></span>
+							</li>
+							<li>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄：</li>
+							<li>
+								<i>${detail.tage}</i>
+								<input type="text" name="tage" class="modification" autofocus>
+								<span class="clickupdate glyphicon glyphicon-pencil"></span>
+							</li>
+							<li>院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系：</li>
+							<li>
+								<i>${categaryname}</i>
+								<input type="text" name="categaryID" class="modification" autofocus>
+								<span class="clickupdate glyphicon glyphicon-pencil"></span>
+							</li>
+							<li>任教年限：</li>
+							<li>
+								<i>${detail.tyear}</i>
+								<input type="text" name="tyear" class="modification" autofocus>
+								<span class="clickupdate glyphicon glyphicon-pencil"></span>
+							</li>
+							<li>联系方式：</li>
+							<li>
+								<i>${detail.tphone}</i>
+								<input type="text" name="tphone" class="modification" autofocus>
+								<span class="clickupdate glyphicon glyphicon-pencil"></span>
+							</li>
+							<li>毕业院校：</li>
+							<li>
+								<i>${detail.gradSchool}</i>
+								<input type="text" name="gradSchool" class="modification" autofocus>
+								<span class="clickupdate glyphicon glyphicon-pencil"></span>
+							</li>
+						</ul>
+					</form>
+				</div>
+				<div class="applyBtn" style="margin-top: -80px;margin-right: 50px;"><p>确认修改</p></div>
+			</div>
+		</div>
+		<footer id="footer"></footer>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script src="js/head.js"></script>
+		<script>
+			$(".navigation").on("click","li",function(){
+				$(this).addClass("navsel");
+				$(this).siblings("li").removeClass("navsel");
+				var titleText = $(this).text();
+				$(".title").text(titleText);
+			})
+		</script>
+	</body>
+</html>

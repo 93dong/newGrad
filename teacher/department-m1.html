@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>系别信息</title>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/footer.css">
+		<link rel="stylesheet" href="css/main.css"/>
+		<style>
+			.title{
+				width:98%;
+				height:30px;
+				margin:10px;
+				font-size: 18px;
+				line-height: 30px;
+				color:#6c8fad;
+				font-weight: bold;
+				border-bottom: 3px solid #AB7994;
+			}
+			.departmentList{
+				width:90%;
+				margin-top: 30px;
+			}
+			.departmentList td ,th{
+				height:40px;
+				line-height: 40px;
+				overflow: hidden;
+			}
+			.overHide{
+				width:50px;
+				height:50px;
+				overflow:hidden;
+				/*text-overflow:ellipsis;*/
+				line-height:24px; font-size:12px;
+				/*white-space: nowrap;*/
+			}
+			.operation:hover{
+				color:#AB7994;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="header"></header>
+		<div id='main'>
+			<div class='navigation'>
+				<ul>
+					<!-- 首页展示个人信息-->
+					<li class="navsel"><a href="department.html" >系别信息</a></li>
+					<li><a href="main.html">教师管理</a></li>
+					<li><a href="recruit.html">招聘信息</a></li>
+				</ul>
+			</div>
+			<div id="showStage" class="subject" style="position:relative; ">
+				<p class="title" data-name="departmentName">系别信息</p>
+				<table class="departmentList" >
+					<thead>
+
+					<th>系部名称</th>
+					<th>所属院系</th>
+					<th>下设专业</th> <!-- 需溢出显示...-->
+					<th>学生人数</th>
+					<th>教师人数</th>
+					<th>操作</th>
+					</thead>
+					<tbody>
+					<tr>
+						<td>计算机系</td>
+						<td>长治学院</td>
+						<td>网络工程</td>
+						<td>159人</td>
+						<td>561人</td>
+						<td  class="operation">详情</td>
+					</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+		<footer id="footer"></footer>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script src="js/head.js"></script>
+	</body>
+</html>

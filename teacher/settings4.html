@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8"/>
-		<title>系统设置页</title>
+		<title>修改密码</title>
 		<link rel="stylesheet" href="css/common.css">
 		<link rel="stylesheet" href="css/header.css">
 		<link rel="stylesheet" href="css/footer.css">
@@ -17,6 +17,38 @@
 				color:#6c8fad;
 				font-weight: bold;
 				border-bottom: 3px solid #AB7994;
+			}
+			.applyBtn p{
+				margin: 0 5px;
+				float: right;
+				padding: 5px 10px;
+				border-radius: 5px;
+				background: #6c8fad;
+				color: #F1F1F1;
+				display: inline-block;
+				cursor: pointer;
+			}
+			.changePwd{
+				width:100%;
+			}
+			.changePwd ul{
+				width:50%;
+				margin: 100px auto;
+			}
+			.changePwd ul li{
+				float:left;
+				height:70px;
+				font-size: 20px;
+				line-height: 70px;
+			}
+			.changePwd ul li:nth-child(odd){
+				text-align: right;
+				width:150px;
+				margin-right: 20px;
+			}
+			.changePwd ul li input{
+				width:250px;
+				height:50px;
 			}
 		</style>
 	</head>
@@ -35,7 +67,19 @@
 			</div>
 			<div id="showStage" class="subject">
 				<p class="title">个人信息</p>
-				<ul></ul>
+				<div class="changePwd">
+					<ul>
+						<li>原密码：</li>
+						<li><input type="password" style="width:250px;"/></li>
+						<li>新密码：</li>
+						<li><input type="password" style="width:250px;"/></li>
+						<li>确认密码：</li>
+						<li><input type="password" style="width:250px;"/></li>
+					</ul>
+				</div>
+				<div class="applyBtn" style="position:absolute;bottom:110px;left:500px;">
+					<p>确认修改</p>
+				</div>
 			</div>
 		</div>
 		<footer id="footer"></footer>

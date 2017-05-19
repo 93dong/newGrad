@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>招聘录入</title>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/footer.css">
+		<link rel="stylesheet" href="css/main.css"/>
+		<style>
+			textarea{
+				resize: none;
+				margin: 0 3px;
+			}
+
+			.title{
+				width:98%;
+				height:30px;
+				margin:10px;
+				font-size: 18px;
+				line-height: 30px;
+				color:#6c8fad;
+				font-weight: bold;
+				border-bottom: 3px solid #AB7994;
+			}
+			.recruitAdd{
+				width:90%;
+				margin: 20px 40px;
+			}
+			.recruitAdd li{
+				padding: 20px 10px;
+			}
+			.recruitAdd .text {
+				display: inline-block;
+				width:795px;
+				/*border: 1px solid #333;*/
+			}
+			.floatNeed:after{
+				content: "";
+				display: inline-block;
+				clear: both;
+			}
+			.applyBtn p{
+				margin: 0 5px;
+				float: right;
+				padding: 5px 10px;
+				border-radius: 5px;
+				background: #6c8fad;
+				color: #F1F1F1;
+				display: inline-block;
+				cursor: pointer;
+			}
+			.operationRequest{
+				width:20px;
+				height:20px;
+				border-radius: 2px;
+				font-size: 10px;
+				line-height: 20px;
+				text-align: center;
+				background: #6c8fad;
+				color: white;
+				font-weight: bold;
+				cursor: pointer;
+				position: relative;
+				bottom: 13px;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="header"></header>
+		<div id='main'>
+			<div class='navigation'>
+				<ul>
+					<!-- 首页展示个人信息-->
+					<li><a href="department.html" >系别信息</a></li>
+					<li><a href="main.html">教师管理</a></li>
+					<li class="navsel"><a href="recruit.html">招聘信息</a></li>
+				</ul>
+			</div>
+			<!-- 删除按钮仅管理员可见-->
+			<div id="showStage" class="subject">
+				<p class="title">请录入招聘信息</p>
+				<form action="" class="recruitAdd">
+					<ul>
+						<li>
+							<label for="jobName">职位名称：</label>
+							<input id="jobName" type="text" name="jobName"/>
+						</li>
+						<li>
+							<label for="jobNum">职位人数：</label>
+							<input id="jobNum" type="number" name="jobNum" min="1"/>
+						</li>
+						<li class="floatNeed">
+							<label style="float: left">职位要求：</label>
+							<div class="recruitRequest text" style="float: left">
+								<textarea name="jobRequest0" cols="30" rows="2"></textarea>
+								<p class="operationRequest addRequest" style="display: inline-block;">+</p>
+								<p class="operationRequest delRequest" style="display:none;">-</p>
+							</div>
+
+						</li>
+						<li class="floatNeed">
+							<label for="jobIntro" style="float: left">职位介绍：</label>
+							<div class="text" style="float: left">
+								<textarea name="jobIntro" id="jobIntro" cols="60	" rows="10"></textarea>
+							</div>
+						</li>
+					</ul>
+				</form>
+				<div class="applyBtn">
+					<p style="position:relative;top:150px;right:30px;">提交</p>
+				</div>
+			</div>
+		</div>
+		<footer id="footer"></footer>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script src="js/head.js"></script>
+		<!--<script src="js/main.js"></script>-->
+		<script>
+			$(".addRequest").on("click",function(){
+				var $request = $(".recruitRequest").children("textarea:last");
+				var $new = $(".recruitRequest").children("textarea:last").clone();
+				var nameNum = $new.attr("name");
+				var num=Number(nameNum.slice(-1))+1;
+				var newName=nameNum.slice(0,-1)+num;
+				$new.attr("name",newName);
+				if($(".recruitRequest").children("textarea").length < 5){
+					$request.after($new);
+				}
+				if($(".recruitRequest").children("textarea").length == 5){
+					$(this).css("display","none");
+				}
+				if($(".recruitRequest").children("textarea").length > 1){
+					$(".delRequest").css("display","inline-block");
+				}
+			});
+			$(".delRequest").on("click",function(){
+				var requestNum = $(".recruitRequest").children("textarea").length;
+				if(requestNum >1){
+					var $del = $(".recruitRequest").children("textarea:last");
+					$del.remove();
+					if(requestNum-1 ==1){
+						$(this).css("display","none");
+					}
+				}
+				if(requestNum == 5){
+					$(".addRequest").css("display","inline-block");
+				}
+			});
+		</script>
+	</body>
+</html>
