@@ -9,13 +9,17 @@
         @$unumber=$_REQUEST['unumber'] or die('{"code":-1,"mess":"用户名不能为空"}');
         @$upwd=$_REQUEST['upwd'] or die('{"code":-2,"mess":"密码不能为空"}');
 
-        $sql="SELECT uname,unumber FROM xt_user WHERE unumber='$unumber' AND upwd='$upwd'";
+        $sql="SELECT uname,upwd,upowerId,teacherId FROM xt_user WHERE unumber='$unumber' AND upwd='$upwd'";
         $result=mysqli_query($conn,$sql);
         $rows=mysqli_fetch_row($result);
         if ($rows[1]==$unumber){
         $_SESSION['loginName']=$rows[0];
+        $_SESSION['teacherId']=$rows[0];
+        $_SESSION['loginPwd']=$rows[0];
+        $_SESSION['uPower']=$rows[0];
             $output=[
-                "code"=>1
+                "code"=>1,
+                "data"=>$rows;
             ];
         }else{
             $output=[
