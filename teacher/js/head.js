@@ -63,13 +63,4 @@ $('#header').load('data/header.php',function(){
 	window.sessionStorage['loginPwd']=$('.sessionData').attr("data-pwd");
 	$(".sessionData").remove();
 });
-$(".navigation").load('data/left.php',function(){
-	$(".slideDown").hover(function(event) {
-		$(this).children('.slideList').slideDown();
-	},function(){
-		$(this).children('.slideList').slideUp();
-	});
-	console.log(window.location.href);
-
-});
 $('#footer').load('data/footer.php');

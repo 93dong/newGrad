@@ -1,5 +1,5 @@
-//$(".departmentDetail").load('data/department.php',function(){
-$(".departmentDetail").load(function(){
+$(".departmentDetail").load('data/department.php',function(){
+//$(".departmentDetail").load(function(){
     var str='';
     var power = $('.navigation ul').attr("data-power");
     if(power==0){

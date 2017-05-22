@@ -26,9 +26,9 @@
 			<div class='navigation'>
 				<ul>
 					<li><a href="homePage.html">首页</a></li>
-					<li class="navsel" data-name="personMessage"><a href="#" >个人信息</a></li>
-					<li data-name="changeMessage"><a href="#">修改个人信息</a></li>
-					<li data-name="changePwd"><a href="#">修改密码</a></li>
+					<li class="navsel" data-name="personMessage"><a href="" >个人信息</a></li>
+					<li data-name="changeMessage"><a href="">修改个人信息</a></li>
+					<li data-name="changePwd"><a href="">修改密码</a></li>
 					<!-- 管理员可见-->
 					<script>
 						if( window.sessionStorage['upower'] && window.sessionStorage['upower']==0){
@@ -46,13 +46,9 @@
 		<footer id="footer"></footer>
 		<script src="js/jquery-1.11.3.js"></script>
 		<script src="js/head.js"></script>
+		<script src="js/settings.js"></script>
 		<script>
-			$(".navigation").on("click","li",function(){
-				$(this).addClass("navsel");
-				$(this).siblings("li").removeClass("navsel");
-				var titleText = $(this).text();
-				$(".title").text(titleText);
-			})
+
 		</script>
 	</body>
 </html>

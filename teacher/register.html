@@ -49,46 +49,32 @@
 
     </form>
 
-    <p class="submitBtn"><input id="registerBtn" type="button" form="adduser" value="提交"/>已有帐号<a href="#">返回登录<a/></p>
+    <p class="submitBtn"><input disabled id="registerBtn" type="button" form="adduser" value="提交"/>已有帐号<a href="#" style="color:#AB7994;font-weight: bold">返回登录</a></p>
   </div>
 </div>
 <footer id="footer"></footer>
 
 <script src="js/jquery-1.11.3.js"></script>
 <script src="js/head.js"></script>
+<script src="js/register.js"></script>
 <script>
-  $(document).ready(function(){
-    $('#upic').change(function(){
-      var fil=this.files;
-      for(var i=0;i<fil.length;i++){
-        reads(fil[i]);
-      }
-    });
-  });
-  function reads(fil){
-    var reader=new FileReader();
-    reader.readAsDataURL(fil);
-    reader.onload=function(){
-      $('.imgShow').html(`<img src="${reader.result}" alt=""/>`);
-    }
-  }
-  $('#registerBtn').on('click',function(){
-    var unumber=$('#unumber').val();
-    var uname=$('#uname').val();
-    var upwd=$('#upwd').val();
-    $.ajax({
-      url:'data/useradd.php',
-      data:`name=${uname}&number=${unumber}&pwd=${upwd}`,
-      success:function(data){
-        if (data.code===1){
-          $('p[data-name="showmessage"]').html('注册成功，请<a href="#">返回登录</a>');
-        }
-      }
-    })
-  });
-  $('.submitBtn').on('click','a',function(){
-    location.href='login.html';
-  })
+
+//  $(document).ready(function(){
+//    $('#upic').change(function(){
+//      var fil=this.files;
+//      for(var i=0;i<fil.length;i++){
+//        reads(fil[i]);
+//      }
+//    });
+//  });
+//  function reads(fil){
+//    var reader=new FileReader();
+//    reader.readAsDataURL(fil);
+//    reader.onload=function(){
+//      $('.imgShow').html(`<img src="${reader.result}" alt=""/>`);
+//    }
+//  }
+
 </script>
 
 </body>
