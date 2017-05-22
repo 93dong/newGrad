@@ -748,6 +748,3 @@ $('#searchPage').on('click',function(e){
 //    }
 //  })
 //}
-$(".slideDown").mouseup(function(event) {
-  $(this).children('.slideList').slideToggle();
-});
