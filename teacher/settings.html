@@ -30,7 +30,12 @@
 					<li data-name="changeMessage"><a href="#">修改个人信息</a></li>
 					<li data-name="changePwd"><a href="#">修改密码</a></li>
 					<!-- 管理员可见-->
-					<li data-name="showManager"><a href="#">申请人员</a></li>
+					<script>
+						if( window.sessionStorage['upower'] && window.sessionStorage['upower']==0){
+							document.write('<li data-name="showManager"><a href="#">申请人员</a></li>');
+						}
+					</script>
+
 				</ul>
 			</div>
 			<div id="showStage" class="subject">

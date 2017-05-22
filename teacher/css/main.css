@@ -470,3 +470,17 @@ tr:nth-child(odd){
 .clickupdate{
   float:right;
 }
+
+.slideList{
+  background-color: #ffffff;
+  display: none;
+}
+.slideDetail{
+  width: 100%;
+  line-height: 30px;
+  font-size: .9em;
+  margin-top: 1px;
+  color: #000000;
+  padding-left: 15px;
+  cursor: pointer;
+}

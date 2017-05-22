@@ -1,7 +1,7 @@
 
 $('#header').load('data/header.php',function(){
 	var fonts=[
-	{"i":0,"cnt":"我校坚持以人为本，坚持科学发展观，在领域内，坚持实事求是，不虚假，不做作。"}
+		{"i":0,"cnt":"我校坚持以人为本，坚持科学发展观，在领域内，坚持实事求是，不虚假，不做作。"}
 	];
 	var fChange={
 		INTERVAL:50000,//定时器时间
@@ -56,6 +56,12 @@ $('#header').load('data/header.php',function(){
 			case 'login':location.href='login.html';break;
 			case 'register':location.href='register.html';break;
 		}
-	})
+	});
+	window.sessionStorage['loginName']=$('.sessionData').attr("data-name");
+	window.sessionStorage['teacherId']=$('.sessionData').attr("data-teacherid");
+	window.sessionStorage['uPower']=$('.sessionData').attr("data-upower");
+	window.sessionStorage['loginPwd']=$('.sessionData').attr("data-pwd");
+	$(".sessionData").remove();
 });
+$(".navigation").load('data/left.php');
 $('#footer').load('data/footer.php');

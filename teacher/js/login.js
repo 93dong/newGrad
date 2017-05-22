@@ -18,7 +18,7 @@ $('#load').on('click',function(){
         //  window.sessionStorage['upow']=data.power;
         //  alert(window.sessionStorage['upow']);
         //}
-        location.href='main.html';
+        location.href='homePage.html';
       }else{
         $('#warn').css('height','30px');
         if(state===2){
