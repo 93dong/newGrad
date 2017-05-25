@@ -24,7 +24,7 @@
           <span></span>
         </li>
         <li>
-          <label for="unumber" >帐&nbsp;&nbsp;&nbsp;号：</label><input id="unumber" type="text" name="uname" required />
+          <label for="unumber" >帐&nbsp;&nbsp;&nbsp;号：</label><input id="unumber" type="text" name="name" required />
           <span></span>
         </li>
         <li>
@@ -33,77 +33,52 @@
         </li>
 
         <li>
-          <label for="upwd">密&nbsp;&nbsp;&nbsp;码：</label><input id="upwd" type="password" name="pwd" />
+          <label for="upwd">密&nbsp;&nbsp;&nbsp;码：</label><input id="upwd" type="password" name="age" min="18" max="80"/>
           <span></span>
         </li>
         <li>
-          <input id="toBe" type="checkbox" name="admin" value="1" /><label for="toBe">是否申请成为管理员</label>
+          <input id="toBe" type="checkbox" name="admin" /><label for="toBe">是否申请成为管理员</label>
           <span></span>
         </li>
         <li>
           <p class="rdo">
-            <span>验证码：</span><input id="test" name="test" type="text" style="width:70px;"/>  &nbsp;  &nbsp;<img src="data/test.php" alt=""/><a href="#" id="change">看不清？换一张</a>
+            <span>验证码：</span><input id="test" type="text" style="width:70px;"/>  &nbsp;  &nbsp;<img src="data/test.php" alt=""/><a href="#" id="change">看不清？换一张</a>
           </p>
         </li>
       </ul>
 
     </form>
 
-    <p class="submitBtn"><input id="registerBtn" disabled type="button" form="adduser" value="提交"/>已有帐号<a href="#">返回登录<a/></p>
+    <p class="submitBtn"><input id="registerBtn" type="button" form="adduser" value="提交"/>已有帐号<a href="#">返回登录<a/></p>
   </div>
 </div>
 <footer id="footer"></footer>
 
 <script src="js/jquery-1.11.3.js"></script>
 <script src="js/head.js"></script>
-<script src="js/ajax.js"></script>
 <script>
-//  $(document).ready(function(){
-//    $('#upic').change(function(){
-//      var fil=this.files;
-//      for(var i=0;i<fil.length;i++){
-//        reads(fil[i]);
-//      }
-//    });
-//  });
-//  function reads(fil){
-//    var reader=new FileReader();
-//    reader.readAsDataURL(fil);
-//    reader.onload=function(){
-//      $('.imgShow').html(`<img src="${reader.result}" alt=""/>`);
-//    }
-//  }
-  $("#teacherId").on("blur",function(){
-    var value = $("#teacherId").val();
-    console.log(value);
-    var data = {};
-    data.url = "data/checkId.php";
-    data.params = "teacherId="+value;
-    data.successF=function(returnData){
-     if(returnData===2){
-       $("#teacherId").next("span").text("您的教师id，有误，不可进行注册，请重新输入或联系管理员。");
-     }else{
-       $("#teacherId").next("span").text("您的教师id，请进行一下注册");
-       $("#registerBtn").prop("disabled",false);
-     }
-      console.log("123");
-    };
-    data.errorF = function(){
-      console.log("fail");
-    }
-    CommonAjax.ajax(data);
+  $(document).ready(function(){
+    $('#upic').change(function(){
+      var fil=this.files;
+      for(var i=0;i<fil.length;i++){
+        reads(fil[i]);
+      }
+    });
   });
+  function reads(fil){
+    var reader=new FileReader();
+    reader.readAsDataURL(fil);
+    reader.onload=function(){
+      $('.imgShow').html(`<img src="${reader.result}" alt=""/>`);
+    }
+  }
   $('#registerBtn').on('click',function(){
-    var teacherId = $("#teacherId").val();
     var unumber=$('#unumber').val();
     var uname=$('#uname').val();
     var upwd=$('#upwd').val();
-    var toBe = $("#toBe").val();
-    var test = $("#test").val();
-    var ajaxData = $("#adduser").serialize();
     $.ajax({
       url:'data/useradd.php',
-      data:ajaxData,
+      data:`name=${uname}&number=${unumber}&pwd=${upwd}`,
       success:function(data){
         if (data.code===1){
           $('p[data-name="showmessage"]').html('注册成功，请<a href="#">返回登录</a>');
