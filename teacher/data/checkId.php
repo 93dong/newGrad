@@ -3,6 +3,7 @@
 
     require('init.php');
 
+
     @$teacherId=$_REQUEST['teacherId'];
 	$sql="SELECT COUNT(*) from xt_teacher where tid = '$teacherId'";
 	$result=mysqli_query($conn,$sql);
