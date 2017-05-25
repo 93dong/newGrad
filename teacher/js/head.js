@@ -69,7 +69,6 @@ $(".navigation").load('data/left.php',function(){
 	},function(){
 		$(this).children('.slideList').slideUp();
 	});
-	console.log(window.location.href);
 
 });
 $('#footer').load('data/footer.php');
