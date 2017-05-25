@@ -76,6 +76,7 @@
     var unumber=$('#unumber').val();
     var uname=$('#uname').val();
     var upwd=$('#upwd').val();
+
     $.ajax({
       url:'data/useradd.php',
       data:`name=${uname}&number=${unumber}&pwd=${upwd}`,
