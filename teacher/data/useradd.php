@@ -6,13 +6,15 @@
     @$test=$_REQUEST['test'];
     session_start();
     if ($test==$_SESSION['RegisterVcode']){
-        @$teacher=$_REQUEST['teacherId'];
+        @$teacherId=$_REQUEST['teacherId'];
         @$unumber=$_REQUEST['unumber'];
         @$name=$_REQUEST['name'];
         @$pwd=$_REQUEST['pwd'];
         @$admin=$_REQUEST['admin'];
-
-        $sql="INSERT INTO xt_user VALUES(NULL,'$number','$name','$pwd','2')";
+        if ($admin===null||$admin===''){
+            $admin=2;
+        }
+        $sql="INSERT INTO xt_user VALUES(NULL,'$unumber','$name','$pwd','1','$teacherId','$admin')";
         $result=mysqli_query($conn,$sql);
         $output=[
                 "code"=>1

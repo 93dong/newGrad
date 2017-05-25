@@ -9,6 +9,15 @@
   <link rel="stylesheet" href="css/register.css"/>
   <link rel="stylesheet" href="css/main.css"/>
   <link rel="stylesheet" href="css/index.css"/>
+  <style>
+    .showmessage{
+      width:100%;
+      height:300px;
+      line-height: 300px;
+      text-align: center;
+      font-size: 30px;
+    }
+  </style>
 </head>
 <body>
 <header id="header"></header>
@@ -17,6 +26,9 @@
     <p class="title" style="font-size: 48px;color: #333333;height: 65px;" >
           用户注册
     </p>
+    <div class="showmessage" style="display:none">
+      注册成功，请<a href="login.html" style="color: #AB7994">返回登录</a>
+    </div>
     <form id="adduser">
       <ul>
         <li>
@@ -24,7 +36,7 @@
           <span></span>
         </li>
         <li>
-          <label for="unumber" >帐&nbsp;&nbsp;&nbsp;号：</label><input id="unumber" type="text" name="name" required />
+          <label for="unumber" >帐&nbsp;&nbsp;&nbsp;号：</label><input id="unumber" type="text" name="unumber" required />
           <span></span>
         </li>
         <li>
@@ -33,59 +45,66 @@
         </li>
 
         <li>
-          <label for="upwd">密&nbsp;&nbsp;&nbsp;码：</label><input id="upwd" type="password" name="age" min="18" max="80"/>
+          <label for="upwd">密&nbsp;&nbsp;&nbsp;码：</label><input id="upwd" type="pwd" name="age" min="18" max="80"/>
           <span></span>
         </li>
         <li>
-          <input id="toBe" type="checkbox" name="admin" /><label for="toBe">是否申请成为管理员</label>
+          <input id="toBe" type="checkbox" value="1" name="admin" /><label for="toBe">是否申请成为管理员</label>
           <span></span>
         </li>
         <li>
           <p class="rdo">
-            <span>验证码：</span><input id="test" type="text" style="width:70px;"/>  &nbsp;  &nbsp;<img src="data/test.php" alt=""/><a href="#" id="change">看不清？换一张</a>
+            <label for="test">验证码：</label><input id="test"  type="text" style="width:70px;"/>  &nbsp;  &nbsp;<img src="data/test.php" alt=""/><a href="#" id="change">看不清？换一张</a>
           </p>
         </li>
       </ul>
 
     </form>
 
-    <p class="submitBtn"><input id="registerBtn" type="button" form="adduser" value="提交"/>已有帐号<a href="#">返回登录<a/></p>
+    <p class="submitBtn"><input id="registerBtn"  disabled type="button" form="adduser" value="提交"/>已有帐号<a href="#">返回登录<a/></p>
   </div>
 </div>
 <footer id="footer"></footer>
 
 <script src="js/jquery-1.11.3.js"></script>
 <script src="js/head.js"></script>
+<script src="js/ajax.js"></script>
+<script src="js/login.js"></script>
 <script>
-  $(document).ready(function(){
-    $('#upic').change(function(){
-      var fil=this.files;
-      for(var i=0;i<fil.length;i++){
-        reads(fil[i]);
+  $("#teacherId").on("blur",function(){
+    var value = $("#teacherId").val();
+    var data={};
+    data.url = 'data/checkId.php';
+    data.params = "teacherId="+value;
+    data.successF = function(returnData){
+      if(returnData.code ===2){
+        $("#teacherId").next("span").text("教师Id有误，请重新输入，或联系管理员");
+      }else{
+        $("#teacherId").next("span").text("教师id正确，请进行以下注册");
+        $("#registerBtn").prop("disabled",false);
       }
-    });
-  });
-  function reads(fil){
-    var reader=new FileReader();
-    reader.readAsDataURL(fil);
-    reader.onload=function(){
-      $('.imgShow').html(`<img src="${reader.result}" alt=""/>`);
-    }
-  }
-  $('#registerBtn').on('click',function(){
-    var unumber=$('#unumber').val();
-    var uname=$('#uname').val();
-    var upwd=$('#upwd').val();
+    };
+    data.errorF = function(){
+    };
+    CommonAjax.ajax(data);
 
-    $.ajax({
-      url:'data/useradd.php',
-      data:`name=${uname}&number=${unumber}&pwd=${upwd}`,
-      success:function(data){
-        if (data.code===1){
-          $('p[data-name="showmessage"]').html('注册成功，请<a href="#">返回登录</a>');
+  });
+  $('#registerBtn').on('click',function(){
+    var data = $("#adduser").serialize();
+    var test=$('#test').val().toUpperCase();
+    var check = $("#registerBtn").prop("disabled");
+    if(!check){
+      $.ajax({
+        url:'data/useradd.php',
+        data:"test="+test+"&"+data,
+        success:function(data){
+          if (data.code===1){
+            $('.showmessage').show();
+            $('#adduser').hide();
+          }
         }
-      }
-    })
+      });
+    }else{}
   });
   $('.submitBtn').on('click','a',function(){
     location.href='login.html';
