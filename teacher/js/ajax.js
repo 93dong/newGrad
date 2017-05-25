@@ -23,6 +23,7 @@ var CommonAjax = (function(){
             }
         });
     };
+
     return {
         ajax:ajax
     }
