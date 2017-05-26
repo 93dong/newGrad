@@ -9,7 +9,7 @@ $(".departmentDetail").load('data/department.php',function(){
     }
 });
 var normal = (function(){
-    var normolDom = '<div><h1 class="departmentTitle">计算机系</h1><p class="departmentMessage"><span class="dMessage">长治学院计算机系成立于1995年。现在设有计算机科学与技术、网络工程两个本科专业,在校学生900余人。 计算机系秉承“学以致用,服务社会”的办学理念,坚持科学发展,...</span><a class="toDetail" href="#">[详情]</a></p></div>';
+    var normolDom = '<div><h1 class="departmentTitle" data-cid="">计算机系</h1><p class="departmentMessage"><span class="dMessage">长治学院计算机系成立于1995年。现在设有计算机科学与技术、网络工程两个本科专业,在校学生900余人。 计算机系秉承“学以致用,服务社会”的办学理念,坚持科学发展,...</span><a class="toDetail" href="#">[详情]</a></p></div>';
     var init=function(){
         var admin = $('.navigation ul').attr("data-power");
         var teacherId = $('.navigation ul').attr("data-id");
@@ -31,6 +31,7 @@ var normal = (function(){
         var data =returnData["data"][0];
             var s=$dom[0];
         $dom.find(".departmentTitle").text(data.cname);
+        $dom.find(".departmentTitle").attr("data-cid",data.cid);
         $dom.find(".dMessage").text(data.cintro);
         $(".departmentDetail").html($dom.html());
     };
@@ -127,6 +128,7 @@ var bindEvent=(function(){
 
             }else{
                 console.log("false");//user
+                categaryId = Number($(this).parent("p").siblings("h1").attr("data-cid"))
 
             }
             console.log(typeof categaryId);
