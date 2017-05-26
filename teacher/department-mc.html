@@ -8,6 +8,9 @@
 		<link rel="stylesheet" href="css/footer.css">
 		<link rel="stylesheet" href="css/main.css"/>
 		<style>
+			.departmentDetail{
+				margin: 20px;
+			}
 			.title{
 				width:98%;
 				height:30px;
@@ -18,7 +21,7 @@
 				font-weight: bold;
 				border-bottom: 3px solid #AB7994;
 			}
-			.departmentDetail{
+			.departmentUl{
 				width:650px;
 				height: 350px;
 				position:absolute;
@@ -26,19 +29,19 @@
 				left:25%;
 				transform:translate(-50%,-50%);
 			}
-			.departmentDetail:after{
+			.departmentUl:after{
 				content: "";
 				display: block;
 				clear: both;
 			}
-			.departmentDetail li{
+			.departmentUl li{
 				float: left;
 				width:40%;
 				margin-left: 10%;
 				height:50px;
 				line-height: 50px;
 			}
-			.departmentDetail li:nth-child(odd){
+			.departmentUl li:nth-child(odd){
 				text-align: right;
 			}
 			.applyBtn p{
@@ -71,23 +74,23 @@
 			</div>
 			<div id="showStage" class="subject" style="position:relative; ">
 				<p class="title" data-name="departmentName">计算机系</p>
-				<ul class="departmentDetail">
-					<li>系部名称：</li>
-					<li class="departmentName">计算机系</li>
-					<li>所属院校：</li>
-					<li class="schoolName">长治学院</li>
-					<li>下设专业：</li>
-					<li class="majorName">网络工程</li>
-					<li>学生人数：</li>
-					<li class="studentNum">159人</li>
-					<li>教师人数：</li>
-					<li><span class="teacherNum">1325人</span><a href="main.html">[详情]</a></li>
-					<li></li>
-				</ul>
+				<div class="departmentDetail">
+					<ul class="departmentUl">
+						<li>系部名称：</li>
+						<li class="departmentName">计算机系</li>
+						<li>所属院校：</li>
+						<li class="schoolName">长治学院</li>
+						<li>教师人数：</li>
+						<li><span class="teacherNum">1325人</span><a href="main.html">[详情]</a></li>
+						<li>详情介绍：</li>
+						<li class="departmentIntro">159人</li>
+					</ul>
+					<ul style="position: absolute;bottom:100px;right:200px">
+						<li class="applyBtn"><p>修改</p><p>删除</p></li>
+					</ul>
+				</div>
 				<!-- 管理员可见-->
-				<ul style="position: absolute;bottom:100px;right:200px">
-					<li class="applyBtn"><p>修改</p><p>删除</p></li>
-				</ul>
+
 			</div>
 		</div>
 		<footer id="footer"></footer>

@@ -18,11 +18,11 @@
 				font-weight: bold;
 				border-bottom: 3px solid #AB7994;
 			}
-			.departmentList{
+			.managerTable{
 				width:90%;
 				margin-top: 30px;
 			}
-			.departmentList td ,th{
+			.managerTable td ,th{
 				height:40px;
 				line-height: 40px;
 				overflow: hidden;
@@ -53,27 +53,30 @@
 			</div>
 			<div id="showStage" class="subject" style="position:relative; ">
 				<p class="title" data-name="departmentName">系别信息</p>
-				<table class="departmentList" >
-					<thead>
+				<div class="departmentList">
+					<table class="managerTable" >
+						<thead>
 
-					<th>系部名称</th>
-					<th>所属院系</th>
-					<th>学生人数</th>
-					<th>教师人数</th>
-					<th>操作</th>
-					</thead>
-					<tbody>
-					<tr>
-						<td>计算机系</td>
-						<td>长治学院</td>
-						<td>159人</td>
-						<td>561人</td>
-						<td  class="operation">详情</td>
-					</tr>
-					</tbody>
-				</table>
+						<th>系部名称</th>
+						<th>所属院系</th>
+						<th>学生人数</th>
+						<th>教师人数</th>
+						<th>操作</th>
+						</thead>
+						<tbody>
+						<tr>
+							<td>计算机系</td>
+							<td>长治学院</td>
+							<td>159人</td>
+							<td>561人</td>
+							<td  class="operation">详情</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
 
 			</div>
+
 		</div>
 		<footer id="footer"></footer>
 		<script src="js/jquery-1.11.3.js"></script>
