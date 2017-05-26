@@ -64,12 +64,21 @@ $('#header').load('data/header.php',function(){
 	$(".sessionData").remove();
 });
 $(".navigation").load('data/left.php',function(){
+	//var pathName = $(window).location;
+	//if(pathName.indexOf("main")!=-1){
+	//	$(".navigation").find("li:nth-child(2)").addClass("navsel");
+	//}
+	//if(pathName.indexOf("department")!=-1){
+	//	$(".navigation").find("li:nth-child(1)").addClass("navsel");
+	//}
+	//if(pathName.indexOf("recruit")!=-1){
+	//	$(".navigation").find("li:nth-child(3)").addClass("navsel");
+	//}
 	$(".slideDown").hover(function(event) {
 		$(this).children('.slideList').slideDown();
 	},function(){
 		$(this).children('.slideList').slideUp();
 	});
-	console.log(window.location.href);
 
 });
 $('#footer').load('data/footer.php');
