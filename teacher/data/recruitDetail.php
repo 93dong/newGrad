@@ -21,11 +21,16 @@
     $sql = "SELECT * FROM xt_request WHERE rid = '$requestid'";
     $result = mysqli_query($conn,$sql);
     $requestdata = mysqli_fetch_all($result,MYSQLI_ASSOC);
+
+    $sql = "SELECT * FROM xt_teacher WHERE recruitID = '$rid'";
+    $result = mysqli_query($conn,$sql);
+    $apply = mysqli_fetch_all($result,MYSQLI_ASSOC);
     $output=[
         "rdata"=>$rows,
         "udata"=>$udata,
         "redata"=>$requestdata,
-        "picpath"=>$picpath
+        "picpath"=>$picpath,
+        "apply"=>$apply
     ];
     echo json_encode($output);
 
