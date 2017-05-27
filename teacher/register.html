@@ -40,12 +40,12 @@
           <span></span>
         </li>
         <li>
-          <label for="uname" >用户名：</label><input id="uname" type="text" name="name" required minlength="2" />
+          <label for="uname" >用户名：</label><input id="uname" type="text" name="name"  required/>
           <span></span>
         </li>
 
         <li>
-          <label for="upwd">密&nbsp;&nbsp;&nbsp;码：</label><input id="upwd" type="pwd" name="age" min="18" max="80"/>
+          <label for="upwd">密&nbsp;&nbsp;&nbsp;码：</label><input id="upwd" type="password" name="pwd" required/>
           <span></span>
         </li>
         <li>
@@ -54,7 +54,7 @@
         </li>
         <li>
           <p class="rdo">
-            <label for="test">验证码：</label><input id="test"  type="text" style="width:70px;"/>  &nbsp;  &nbsp;<img src="data/test.php" alt=""/><a href="#" id="change">看不清？换一张</a>
+            <label for="test">验证码：</label><input id="test"  type="text" style="width:70px;"/>  &nbsp;  &nbsp;<img src="data/test.php" alt=""/><a href="#" id="change">看不清？换一张</a><span class="testdanger" style="font-size: 12px;color: red;"></span>
           </p>
         </li>
       </ul>
@@ -70,46 +70,7 @@
 <script src="js/head.js"></script>
 <script src="js/ajax.js"></script>
 <script src="js/login.js"></script>
-<script>
-  $("#teacherId").on("blur",function(){
-    var value = $("#teacherId").val();
-    var data={};
-    data.url = 'data/checkId.php';
-    data.params = "teacherId="+value;
-    data.successF = function(returnData){
-      if(returnData.code ===2){
-        $("#teacherId").next("span").text("教师Id有误，请重新输入，或联系管理员");
-      }else{
-        $("#teacherId").next("span").text("教师id正确，请进行以下注册");
-        $("#registerBtn").prop("disabled",false);
-      }
-    };
-    data.errorF = function(){
-    };
-    CommonAjax.ajax(data);
-
-  });
-  $('#registerBtn').on('click',function(){
-    var data = $("#adduser").serialize();
-    var test=$('#test').val().toUpperCase();
-    var check = $("#registerBtn").prop("disabled");
-    if(!check){
-      $.ajax({
-        url:'data/useradd.php',
-        data:"test="+test+"&"+data,
-        success:function(data){
-          if (data.code===1){
-            $('.showmessage').show();
-            $('#adduser').hide();
-          }
-        }
-      });
-    }else{}
-  });
-  $('.submitBtn').on('click','a',function(){
-    location.href='login.html';
-  })
-</script>
+<script src="js/register.js"></script>
 
 </body>
 </html>
