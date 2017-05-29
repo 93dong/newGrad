@@ -141,7 +141,7 @@ var time = function(time){
 }
 var recruitDetail = (function(){
     var ridNum;
-    var dom ='<ul class="recruits"><li class="publishMessage"><img class="publisherImg" src="123.png" alt=""/><span class="publisher">casfs</span><span class="publishTime">asdasd</span></li><li class="jobDescription"><p class="recruitTitle">职位介绍:</p><p class="recruitText" style="margin-left: 40px;"></p></li><li class="jobRequirements"><p class="recruitTitle">职位要求:</p><ol class="requestList" style="margin-left: 40px;"></ol></li><li class="applyPerson"><p class="recruitTitle">申请人信息</p><ul class="applyMessage" style="margin-left: 10px;"></ul></li><li class="applyBtn"><p class="deleteDetail">删除该招聘信息</p> <!-- 管理员显示--><p class="apply">申请</p>  <!-- 用户显示--></li></ul>';
+    var dom ='<ul class="recruits"><li class="publishMessage"><img class="publisherImg" src="123.png" alt=""/><span class="publisher">casfs</span><span class="publishTime">asdasd</span></li><li class="jobDescription"><p class="recruitTitle">职位介绍:</p><p class="recruitText" style="margin-left: 40px;"></p></li><li class="jobNum"><p class="recruitMan">招聘人数:</p><p class="recruitNum" style="margin-left: 40px;">1</p></li><li class="jobRequirements"><p class="recruitTitle">职位要求:</p><ol class="requestList" style="margin-left: 40px;"></ol></li><li class="applyPerson"><p class="recruitTitle">申请人信息</p><ul class="applyMessage" style="margin-left: 10px;"></ul></li><li class="applyBtn"><p class="deleteDetail">删除该招聘信息</p> <!-- 管理员显示--><p class="apply">申请</p>  <!-- 用户显示--></li></ul>';
     var init =function(rid){
         ridNum = rid;
         var data = {};
@@ -156,7 +156,6 @@ var recruitDetail = (function(){
         CommonAjax.ajax(data);
     };
     var ajaxDetail = function(returnData){
-        console.log(returnData);
         var recruitdetail = returnData.rdata;
         var udata = returnData.udata;
         var redata = returnData.redata;
@@ -183,9 +182,14 @@ var recruitDetail = (function(){
 
         var text = recruitData.rintro;
         $jobDom.find(".recruitText").text(text);
+        var num = recruitData.rnum;
+        var $jobnum = $dom.find(".jobNum");
+        $jobnum.find(".recruitNum").text(num);
         var lidata = '';
-        for(var i in recruitData){
-            lidata +='<li>'+ recruitData[i]+'</li>'
+        for(var i in requestData){
+            if(i!=='rid'){
+                lidata +='<li>'+ requestData[i]+'</li>';
+            }
         }
         $requestDom.find(".requestList").html(lidata);
     };
@@ -239,10 +243,61 @@ var recruitDetail = (function(){
     }
 })();
 var recruitAdd = (function(){
-    var dom = '<div><form action="" class="recruitAdd"><ul><li><label for="jobName">职位名称：</label><input id="jobName" type="text" name="jobName"/></li><li><label for="jobNum">职位人数：</label><input id="jobNum" type="number" name="jobNum" min="1"/></li><li class="floatNeed"><label style="float: left">职位要求：</label><div class="recruitRequest text" style="float: left"><textarea name="jobRequest0" cols="30" rows="2"></textarea><p class="operationRequest addRequest" style="display: inline-block;">+</p><p class="operationRequest delRequest" style="display:none;">-</p></div></li><li class="floatNeed"><label for="jobIntro" style="float: left">职位介绍：</label><div class="text" style="float: left"><textarea name="jobIntro" id="jobIntro" cols="60	" rows="10"></textarea></div></li></ul></form><div class="applyBtn"><p style="position:relative;top:150px;right:30px;">提交</p></div></div>';
+    var dom = '<div><form action="" class="recruitAdd"><ul><li><label for="jobName">职位名称：</label><input id="jobName" type="text" name="jobname"/></li><li><label for="jobNum">职位人数：</label><input id="jobNum" type="number" name="jobnum" min="1"/></li><li class="floatNeed"><label style="float: left">职位要求：</label><div class="recruitRequest text" style="float: left"><textarea name="jobrequest0" cols="30" rows="2"></textarea><p class="operationRequest addRequest" style="display: inline-block;">+</p><p class="operationRequest delRequest" style="display:none;">-</p></div></li><li class="floatNeed"><label for="jobIntro" style="float: left">职位介绍：</label><div class="text" style="float: left"><textarea name="jobintro" id="jobIntro" cols="60	" rows="10"></textarea></div></li></ul></form><div class="applyBtn addR"><p style="position:relative;top:10px;right:30px;">提交</p></div></div>';
     var init = function(){
-        console.log(123);
+        var $add = $(dom);
+        $(".showMessage").html($add);
+        bindEvent();
     };
+    var bindEvent = function(){
+        $(".addRequest").on("click",function(){
+            var $request = $(".recruitRequest").children("textarea:last");
+            var $new = $(".recruitRequest").children("textarea:last").clone();
+            var nameNum = $new.attr("name");
+            var num=Number(nameNum.slice(-1))+1;
+            var newName=nameNum.slice(0,-1)+num;
+            $new.attr("name",newName);
+            if($(".recruitRequest").children("textarea").length < 5){
+                $request.after($new);
+            }
+            if($(".recruitRequest").children("textarea").length == 5){
+                $(this).css("display","none");
+            }
+            if($(".recruitRequest").children("textarea").length > 1){
+                $(".delRequest").css("display","inline-block");
+            }
+        });
+        $(".delRequest").on("click",function(){
+            var requestNum = $(".recruitRequest").children("textarea").length;
+            if(requestNum >1){
+                var $del = $(".recruitRequest").children("textarea:last");
+                $del.remove();
+                if(requestNum-1 ==1){
+                    $(this).css("display","none");
+                }
+            }
+            if(requestNum == 5){
+                $(".addRequest").css("display","inline-block");
+            }
+        });
+        $(".addR").on("click","p",function(){
+            var data={};
+            data.url="data/recruitadd.php";
+            data.params = $(".recruitAdd").serialize();
+            var id= $('.navigation ul').attr("data-id");
+            var time = Number(new Date());
+            data.params +='&id='+id+'&time='+time;
+            data.successF = function(returnData){
+                console.log(123);
+                console.log(returnData);
+            };
+            data.errorF = function(returnData){
+                console.log(321);
+            }
+            CommonAjax.ajax(data);
+        })
+    };
+
     return{
         add:init
     }

@@ -20,7 +20,7 @@
     $requestid = $rows["requestid"];
     $sql = "SELECT * FROM xt_request WHERE rid = '$requestid'";
     $result = mysqli_query($conn,$sql);
-    $requestdata = mysqli_fetch_all($result,MYSQLI_ASSOC);
+    $requestdata = mysqli_fetch_all($result,MYSQLI_ASSOC)[0];
 
     $sql = "SELECT * FROM xt_teacher WHERE recruitID = '$rid'";
     $result = mysqli_query($conn,$sql);
