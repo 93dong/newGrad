@@ -46,6 +46,7 @@
 	$sql = "INSERT INTO xt_recruit VALUES(NULL,'$jobname','$time','$teacherid','$jobintro','$jobnum','$resquestid')";
 	$result = mysqli_query($conn,$sql);
 	$rid = mysqli_insert_id($conn);
+
 	if($rid!=0){
 	    $output=[
 	        "code"=>1

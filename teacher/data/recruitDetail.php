@@ -25,6 +25,7 @@
     $sql = "SELECT * FROM xt_teacher WHERE recruitID = '$rid'";
     $result = mysqli_query($conn,$sql);
     $apply = mysqli_fetch_all($result,MYSQLI_ASSOC);
+
     $output=[
         "rdata"=>$rows,
         "udata"=>$udata,

@@ -6,6 +6,7 @@ $(".departmentDetail").load('data/department.php',function(){
        manager.managerUser();
     }else{
         normal.normalUser();
+
     }
 });
 var normal = (function(){

@@ -15,9 +15,9 @@
     @$gender1=$_REQUEST['gender'];
     $gender2='';
     if ($gender1===null||$gender1===''){
-        $gender1='女';
-        $gender2='男';
-    }
+             $gender1='女';
+             $gender2='男';
+         }
     if ($gender1==1){
         $gender1='女';
         $gender2='';

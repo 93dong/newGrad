@@ -10,6 +10,8 @@
         $result=mysqli_query($conn,$sql);
         $departmentId=mysqli_fetch_row($result)[0];
         $sql="SELECT * FROM xt_categary WHERE cid='$departmentId'";
+
+
         $result=mysqli_query($conn,$sql);
         $rows=mysqli_fetch_all($result,MYSQLI_ASSOC);
      }

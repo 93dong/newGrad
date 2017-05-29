@@ -9,6 +9,7 @@
      $result = mysqli_query($conn,$sql);
 
      $sql = "DELETE FROM xt_teacher WHERE categaryId ='$did'";
+
      $result = mysqli_query($conn,$sql);
      $output =[
         "code"=>1

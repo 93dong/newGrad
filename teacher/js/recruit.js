@@ -280,6 +280,7 @@ var recruitAdd = (function(){
                 $(".addRequest").css("display","inline-block");
             }
         });
+
         $(".addR").on("click","p",function(){
             var data={};
             data.url="data/recruitadd.php";
