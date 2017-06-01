@@ -3,10 +3,10 @@
     session_start();
 ?>
 <?php
-	echo('<ul data-power="'.$_SESSION['uPower'].'" data-id="'.$_SESSION['teacherId'].'">')
+	echo('<ul>')
 
 ?>
-	<li class="navsel"><a href="homePage.html">首页</a></li>
+	<li><a href="homePage.html">首页</a></li>
 	<li><a href="department.html" >系别信息</a></li>
 	<?php
 		if($_SESSION['uPower']==0){
@@ -21,5 +21,5 @@
               					</li>');
 		}
 	?>
-	<li><a href="recruit.html">招聘信息</a></li>
+	<li class="navsel"><a href="recruit.html">招聘信息</a></li>
 </ul>

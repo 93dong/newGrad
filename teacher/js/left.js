@@ -26,6 +26,7 @@ $(".navigation").load('data/left.php',function(){
 			fresh();
 		});
 	});
+
 	$('#addPage').on('click',function(e){
 		console.log("tianjia");
 		e.preventDefault();

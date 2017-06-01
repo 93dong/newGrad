@@ -20,7 +20,7 @@
 				
     $result=mysqli_query($conn,$sql);
 		
-		
+
 		$id=mysqli_insert_id($conn);
 
 		if(is_uploaded_file($_FILES['photo']['tmp_name'])){

@@ -1,6 +1,6 @@
 $(".showMessage").load('data/recruit.php',function(){
-    var admin = $('.navigation ul').attr("data-power");
-    var teacherId = $('.navigation ul').attr("data-id");
+    var admin = window.sessionStorage["upower"];
+    var teacherId = window.sessionStorage["teacherId"];
 
     if(admin==0){
         recruit.manager();

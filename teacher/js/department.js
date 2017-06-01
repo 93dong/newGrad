@@ -1,7 +1,7 @@
 $(".departmentDetail").load('data/department.php',function(){
 //$(".departmentDetail").load(function(){
-    var admin = $('.navigation ul').attr("data-power");
-    var teacherId = $('.navigation ul').attr("data-id");
+    var admin = window.sessionStorage["upower"];
+    var teacherId = window.sessionStorage["teacherId"];
     if(admin==0){
        manager.managerUser();
     }else{
@@ -11,9 +11,9 @@ $(".departmentDetail").load('data/department.php',function(){
 });
 var normal = (function(){
     var normolDom = '<div><h1 class="departmentTitle" data-cid="">计算机系</h1><p class="departmentMessage"><span class="dMessage">长治学院计算机系成立于1995年。现在设有计算机科学与技术、网络工程两个本科专业,在校学生900余人。 计算机系秉承“学以致用,服务社会”的办学理念,坚持科学发展,...</span><a class="toDetail" href="#">[详情]</a></p></div>';
+    var admin = window.sessionStorage["upower"];
+    var teacherId = window.sessionStorage["teacherId"];
     var init=function(){
-        var admin = $('.navigation ul').attr("data-power");
-        var teacherId = $('.navigation ul').attr("data-id");
         var data={};
         data.url='data/department.php';
         data.params="teacherId="+teacherId+"&admin="+admin;
@@ -30,7 +30,7 @@ var normal = (function(){
     var dataAjax = function(returnData){
         var $dom = $(normolDom);
         var data =returnData["data"][0];
-            var s=$dom[0];
+            //var s=$dom[0];
         $dom.find(".departmentTitle").text(data.cname);
         $dom.find(".departmentTitle").attr("data-cid",data.cid);
         $dom.find(".dMessage").text(data.cintro);
@@ -42,9 +42,9 @@ var normal = (function(){
 })();
 var manager = (function(){
     var managerDom='<table class="managerTable" ><thead><th>系别编码</th><th>系别名称</th><th>所属院校</th><th>学生人数</th><th>操作</th></thead><tbody></tbody></table>';
+    var admin = window.sessionStorage["upower"];
+    var teacherId = window.sessionStorage["teacherId"];
     var init=function(){
-        var admin = $('.navigation ul').attr("data-power");
-        var teacherId = $('.navigation ul').attr("data-id");
         var data={};
         data.url='data/department.php';
         data.params="teacherId="+teacherId+"&admin="+admin;
@@ -63,7 +63,6 @@ var manager = (function(){
         var $dom = $(managerDom);
         //var data =returnData["code"];
         var departmentData =returnData.data;
-        console.log(departmentData);
         var outIndex,inIndex;
         for(outIndex=0;outIndex<departmentData.length;outIndex++){
             var trData = '<tr>';
@@ -80,14 +79,16 @@ var manager = (function(){
         $(".departmentDetail").html($dom);
         $(".departmentDetail").append(operation);
 
-    }
+    };
     return {
         managerUser :init
     }
 })();
 
 var departmentDetail = (function(){
-    var dom ='<div><ul class="departmentUl"><li>系部名称：</li><li class="departmentName">计算机系</li><li>所属院校：</li><li class="schoolName">长治学院</li><li>教师人数：</li><li><span class="teacherNum">1325</span><a href="main.html">[详情]</a></li><li>详情介绍：</li><li class="departmentIntro">159人</li></ul><ul style="position: absolute;bottom:100px;right:200px"><li class="applyBtn"><p>修改</p><p>删除</p></li></ul></div>';
+    var dom ='<div><ul class="departmentUl"><li>系部名称：</li><li class="departmentName">计算机系</li><li>所属院校：</li><li class="schoolName">长治学院</li><li>教师人数：</li><li><span class="teacherNum">1325</span><a href="main.html">[详情]</a></li><li>详情介绍：</li><li class="departmentIntro">159人</li></ul><ul class="manageroperation" style="position: absolute;bottom:100px;right:200px"></ul></div>';
+    var admin = window.sessionStorage["upower"];
+    var teacherId = window.sessionStorage["teacherId"];
     var init = function(categaryId){
         var data={};
         data.url='data/departmentDetail.php';
@@ -110,7 +111,13 @@ var departmentDetail = (function(){
         $detail.find(".schoolName").text(data.academy);
         $detail.find(".departmentIntro").text(data.cintro);
         $detail.find(".teacherNum").text(teacherNum);
+        if(admin==0){
+            $detail.find(".manageroperation").append('<li class="applyBtn"><p class="update">修改</p><p class="delete">删除</p></li>');
+        }
         $(".departmentDetail").html($detail);
+    };
+    var bind = function(){
+
     };
     return{
         detail:init
@@ -135,7 +142,29 @@ var bindEvent=(function(){
             console.log(typeof categaryId);
             departmentDetail.detail(categaryId);
             //departmentDetail.detail(categaryId);
+        });
+        $(".manageroperation").on("click",".update",function(){
+            console.log(123);
+        });
+        $(".manageroperation").on("click",".delete",function(){
+            var isdelete = confirm("是否确认删除此系别信息并将相关教师系别信息清空？");
+            if(isdelete){
+                var isclear = confirm("是否确认清除相关教师系别信息");
+                if(isclear){
+                    console.log(3);
+                }else{
+                    console.log(4);
+                }
+                console.log(1);
+                //删除系别表中该系别信息，同时修改教师表
+            }else{
+                console.log(2);
+            }
         })
+        //$(".applyBtn").on("click",".update",function(){console.log(123)});
+        //$(".applyBtn").on("click",".delete",function(){
+        //    console.log(321);
+        //});
     };
     return {
         bind:bind

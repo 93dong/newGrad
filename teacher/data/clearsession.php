@@ -1,4 +1,4 @@
-<?php
+ <?php
     header('Content-Type:application/json');
     require('init.php');
     @$state=$_REQUEST['state'];

@@ -1,4 +1,4 @@
-var CommonAjax = (function(){
+ var CommonAjax = (function(){
     var serviceUrl="ss";
     var ajax = function(data){
         $.ajax({

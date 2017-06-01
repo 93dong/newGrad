@@ -3,7 +3,7 @@
 	?>
 
 	<div id="logo">
-		<span>教师资源管理系统</span>
+		<span>师资管理系统</span>
 		<ul>
 			<li class="user"><?php
 				session_start();

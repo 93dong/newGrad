@@ -18,6 +18,83 @@
 				font-weight: bold;
 				border-bottom: 3px solid #AB7994;
 			}
+			.personMessage{
+				width:60%;
+				float: left;
+				margin-top: 20px;
+				margin-left: 50px;
+			}
+			.personMessage li{
+				float: left;
+				width:30%;
+				margin-left: 5%;
+				height:50px;
+				line-height: 50px;
+			}
+			.personMessage li:nth-child(odd){
+				text-align: center;
+			}
+			.userlist{
+				float:left;
+				width:40%;
+				margin-top: 30px;
+				margin-left: 50px;
+			}
+			.userlist li{
+				float:left;
+				width:25%;
+				height: 45px;
+				/*line-height: 45px;*/
+			}
+			.userlist li:nth-child(odd){
+				margin-left: 5%;
+			}
+			.userlist li:nth-child(even){
+				width:51%;
+			}
+			.updateBtn{
+				margin: 0 50px 0 5px;
+				float: right;
+				padding: 5px 10px;
+				border-radius: 5px;
+				background: #6c8fad;
+				color: #F1F1F1;
+				display: inline-block;
+				cursor: pointer;
+				position:absolute;
+				bottom:30px;
+				right:0px;
+			}
+			.changePwd{
+				width:50%;
+				margin: 100px auto;
+			}
+			.changePwd li{
+				float:left;
+				height:70px;
+				font-size: 20px;
+				line-height: 70px;
+			}
+			.changePwd  li:nth-child(odd){
+				text-align: right;
+				width:150px;
+				margin-right: 20px;
+			}
+			.changePwd  li input{
+				width:250px;
+				height:30px;
+			}
+			.applyBtn p{
+				margin: 0 5px;
+				float: right;
+				padding: 5px 10px;
+				border-radius: 5px;
+				background: #6c8fad;
+				color: #F1F1F1;
+				display: inline-block;
+				cursor: pointer;
+			}
+
 		</style>
 	</head>
 	<body>
@@ -40,12 +117,15 @@
 			</div>
 			<div id="showStage" class="subject">
 				<p class="title">个人信息</p>
-				<ul></ul>
+				<div class="personDetail">
+
+				</div>
 			</div>
 		</div>
 		<footer id="footer"></footer>
 		<script src="js/jquery-1.11.3.js"></script>
 		<script src="js/head.js"></script>
+		<script src="js/ajax.js"></script>
 		<script src="js/settings.js"></script>
 		<script>
 

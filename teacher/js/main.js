@@ -597,9 +597,7 @@ $('#updatePage').on('click',function(e){
           p++;
         }
       }
-      console.log(sel);
       var arr=JSON.stringify(sel);
-      console.log(arr);
       $.ajax({
         url:`data/update.php`,
         data:{sel:arr,tid:dnum},

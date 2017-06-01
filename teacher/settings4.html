@@ -31,32 +31,32 @@
 			.changePwd{
 				width:100%;
 			}
-			.changePwd ul{
+			.changePwd{
 				width:50%;
 				margin: 100px auto;
 			}
-			.changePwd ul li{
+			.changePwd li{
 				float:left;
 				height:70px;
 				font-size: 20px;
 				line-height: 70px;
 			}
-			.changePwd ul li:nth-child(odd){
+			.changePwd  li:nth-child(odd){
 				text-align: right;
 				width:150px;
 				margin-right: 20px;
 			}
-			.changePwd ul li input{
+			.changePwd  li input{
 				width:250px;
-				height:50px;
+				height:30px;
 			}
 		</style>
 	</head>
 	<body>
 		<header id="header"></header>
 		<div id='main'>
-			<div class='navigation'>
-				<ul>
+			<div >
+				<ul class='navigation'>
 					<li><a href="homePage.html">首页</a></li>
 					<li class="navsel" data-name="personMessage"><a href="#" >个人信息</a></li>
 					<li data-name="changeMessage"><a href="#">修改个人信息</a></li>
@@ -76,10 +76,11 @@
 						<li>确认密码：</li>
 						<li><input type="password" style="width:250px;"/></li>
 					</ul>
+					<div class="applyBtn" style="position:absolute;bottom:110px;left:500px;">
+						<p>确认修改</p>
+					</div>
 				</div>
-				<div class="applyBtn" style="position:absolute;bottom:110px;left:500px;">
-					<p>确认修改</p>
-				</div>
+
 			</div>
 		</div>
 		<footer id="footer"></footer>

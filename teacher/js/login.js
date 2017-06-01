@@ -7,6 +7,9 @@ $('#load').on('click',function(){
     success:function(data){
       var state=data.code;
       if(state==1){
+        var userdata = data.data;
+        window.sessionStorage["teacherId"] = userdata["teacherId"];
+        window.sessionStorage["upower"] = userdata["upowerId"];
         location.href='homePage.html';
       }else{
         $('#warn').css('height','30px');

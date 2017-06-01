@@ -1,4 +1,4 @@
-<?php
+ <?php
     header('Content-Type:image/png');
     $w=80;
     $h=25;

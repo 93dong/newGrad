@@ -1,4 +1,4 @@
-$("#teacherId").on("blur",function(){
+ $("#teacherId").on("blur",function(){
     var value = $("#teacherId").val();
     var data={};
     data.url = 'data/checkId.php';

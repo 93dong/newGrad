@@ -1,4 +1,4 @@
-<?php
+ <?php
 //gender year
 header('Content-Type:application/json');
 

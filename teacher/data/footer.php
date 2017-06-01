@@ -1,4 +1,4 @@
-<?php
+ <?php
 	header('Content-Type:text/html');
 	?>
 	<p><img src="" alt=""></p>

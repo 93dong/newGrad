@@ -57,11 +57,11 @@ $('#header').load('data/header.php',function(){
 			case 'register':location.href='register.html';break;
 		}
 	});
-	window.sessionStorage['loginName']=$('.sessionData').attr("data-name");
-	window.sessionStorage['teacherId']=$('.sessionData').attr("data-teacherid");
-	window.sessionStorage['uPower']=$('.sessionData').attr("data-upower");
-	window.sessionStorage['loginPwd']=$('.sessionData').attr("data-pwd");
-	$(".sessionData").remove();
+	//window.sessionStorage['loginName']=$('.sessionData').attr("data-name");
+	//window.sessionStorage['teacherId']=$('.sessionData').attr("data-teacherid");
+	//window.sessionStorage['uPower']=$('.sessionData').attr("data-upower");
+	//window.sessionStorage['loginPwd']=$('.sessionData').attr("data-pwd");
+	//$(".sessionData").remove();
 });
 $(".navigation").load('data/left.php',function(){
 	//var pathName = $(window).location;
