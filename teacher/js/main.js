@@ -490,6 +490,7 @@ $('#updatePage').on('click',function(e){
       });
     }else{
       conosle.log("321");
+
       $('.jump').addClass('jumpout');
     }
   });
