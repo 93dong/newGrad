@@ -86,7 +86,7 @@ var manager = (function(){
 })();
 
 var departmentDetail = (function(){
-    var dom ='<div><ul class="departmentUl"><li>系部名称：</li><li class="departmentName">计算机系</li><li>所属院校：</li><li class="schoolName">长治学院</li><li>教师人数：</li><li><span class="teacherNum">1325</span><a href="main.html">[详情]</a></li><li>详情介绍：</li><li class="departmentIntro">159人</li></ul><ul class="manageroperation" style="position: absolute;bottom:100px;right:200px"></ul></div>';
+    var dom ='<div><ul class="departmentUl"><li>系部名称：</li><li><i class="departmentName"></i><input type="text" name="cname" class="modification" autofocus><span class="clickupdate glyphicon glyphicon-pencil"></span></li><li>所属院校：</li><li><i class="schoolName"></i><input type="text" name="academy" class="modification" autofocus><span class="clickupdate glyphicon glyphicon-pencil"></span></li><li>教师人数：</li><li><span class="teacherNum">1325</span><a class="jumpdetail" href="main.html">[详情]</a></li><li>详情介绍：</li><li><i class="departmentIntro"></i><input type="text" name="cintro" class="modification" autofocus><span class="clickupdate glyphicon glyphicon-pencil"></span></li></ul><ul class="manageroperation" style="position: absolute;bottom:100px;right:200px"></ul></div>';
     var admin = window.sessionStorage["upower"];
     var teacherId = window.sessionStorage["teacherId"];
     var init = function(categaryId){
@@ -107,6 +107,7 @@ var departmentDetail = (function(){
         var teacherNum = returnData.count;
         var $detail = $(dom);
         data = data[0];
+        $detail.find(".departmentUl").attr("data-id",data.cid);
         $detail.find(".departmentName").text(data.cname);
         $detail.find(".schoolName").text(data.academy);
         $detail.find(".departmentIntro").text(data.cintro);
@@ -121,6 +122,33 @@ var departmentDetail = (function(){
     };
     return{
         detail:init
+    }
+})();
+var departmentAdd = (function(){
+    var dom='<form id="departmentadd" action="get"><ul><li><label for="departmentName">系别名称</label></li><li><input form="departmentadd" id="departmentName" name="departmentName" type="text"/></li><li><label for="departmentSchool">所属院校</label></li><li><input form="departmentadd"  id="departmentSchool" name="departmentSchool" type="text"/></li><li><label for="departmentStuNum">学生人数</label></li><li><input form="departmentadd" id="departmentStuNum" name="departmentStuNum" type="text"/></li><li><label for="departmentIntro">系别介绍</label></li><li><textarea form="departmentadd" id="departmentIntro" name="departmentIntro" cols="50" rows="10"></textarea></li></ul></form><div class="applyBtn"><p class="addDepartment">提交</p></div>';
+    var init=function(){
+        var $dom = $(dom);
+        $(".departmentDetail").html($dom);
+        bindEvent();
+    };
+    var bindEvent = function(){
+        $(".applyBtn").on("click",".addDepartment",function(){
+            var data={};
+            data.url="data/addcategary.php";
+            data.params = $("#departmentadd").serialize();
+            data.successF = function(returnData){
+                if(returnData.code==1){
+                    manager.managerUser();
+                }
+            };
+            data.errorF = function(){
+                console.error("cuola");
+            };
+            CommonAjax.ajax(data);
+        });
+    };
+    return{
+        add:init
     }
 })();
 var bindEvent=(function(){
@@ -143,24 +171,82 @@ var bindEvent=(function(){
             departmentDetail.detail(categaryId);
             //departmentDetail.detail(categaryId);
         });
+        $(".clickupdate").on("click",function(){
+            var type=$(this).attr('data-name');
+            $(this).siblings('input').css('display','inline-block').siblings('i').css('display','none');
+        });
+        $(".modification").on("blur",function(){
+            var html=$(this).val();
+            if(!html){
+                $(this).css('display','none').siblings('i').css('display','inline-block');
+            }else{
+                $(this).siblings('i').html(html).css('display','inline-block');
+                $(this).css('display','none');
+            }
+        });
         $(".manageroperation").on("click",".update",function(){
-            console.log(123);
+            var cid=$(".departmentUl").attr("data-id");
+            var inputs=$('.departmentUl input');
+            var inputlength=inputs.length;
+            for(var i=0,sel=[],p=0;i<inputlength;i++){
+                var v=inputs[i].value;
+                var k=inputs[i].name;
+                if (v!==''){
+                    sel[p]=[k,v];
+                    p++;
+                }
+            }
+            if(sel.length==0){
+                alert("无修改项需修改");
+                return;
+            }
+            var arr=JSON.stringify(sel);
+            var data={};
+            data.url="data/update.php";
+            data.params = "sel="+arr+"&cid="+cid+"&update=1";
+            data.successF = function(returnData){
+               console.log(returnData);
+            };
+            data.errorF = function(){
+                console.log("error");
+            };
+            CommonAjax.ajax(data);
         });
         $(".manageroperation").on("click",".delete",function(){
             var isdelete = confirm("是否确认删除此系别信息并将相关教师系别信息清空？");
             if(isdelete){
                 var isclear = confirm("是否确认清除相关教师系别信息");
+                var data={};
+                data.url="data/deleteDepartment.php";
+                var cid= $(".departmentUl").attr("data-id");
+                data.params = "cid="+cid;
+                data.successF = function(returnData){
+                    console.log(returnData);
+                    alert(1);
+                };
+                data.errorF = function(){
+                    console.log(123);
+                };
+                CommonAjax.ajax(data);
                 if(isclear){
-                    console.log(3);
+                    conosle.log("清楚相关教师所属系别信息");
                 }else{
-                    console.log(4);
+                    console.log("具体操作逻辑还在思考中");
                 }
-                console.log(1);
                 //删除系别表中该系别信息，同时修改教师表
             }else{
                 console.log(2);
             }
-        })
+        });
+        $(".jumpdetail").on("click",function(e){
+            e.preventDefault();
+            var categaryId=$(".departmentUl").attr("data-id");
+            window.sessionStorage["categaryId"]=categaryId;
+            location.href='main.html';
+        });
+        $(".showMessage").on("click",".addBtn",function(){
+                departmentAdd.add();
+        });
         //$(".applyBtn").on("click",".update",function(){console.log(123)});
         //$(".applyBtn").on("click",".delete",function(){
         //    console.log(321);

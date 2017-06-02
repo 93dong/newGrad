@@ -52,9 +52,20 @@ $('#showStage').load('data/all.php',function(){
           html+=`<li data-name="${p.cid}">${p.cname}</li>`
         });
         $('.selectOpt li div>ul').html(html);
+        if(window.sessionStorage["categaryId"]){
+          var categaryId = window.sessionStorage["categaryId"];
+          var gender='',condition='';
+          update(1,gender,condition,categaryId);
+          $("#showStage>header").css("display",'none');
+          $(".selectOpt div ul li[data-name='"+categaryId+"']").addClass('select').siblings('li').removeClass('select');
+          window.sessionStorage.removeItem("categaryId");
+        }else{
+          console.log(categaryId);
+        }
       }
     });
   };
+  $("header").css("display",'block');
   fresh();
   var total=0;
   function update(pageNum,gender,condition,categaryId){
@@ -105,7 +116,9 @@ $('#showStage').load('data/all.php',function(){
           $('ol.pager').html(html);
         }
       })
-    }
+    };
+
+
   $('#showStage').on('click',' ol.pager li a',function(e){
       e.preventDefault();
       $(this).parent('li').addClass('active').siblings('li').removeClass('active');
@@ -160,6 +173,7 @@ $('#showStage').load('data/all.php',function(){
     //  success:function(){}
     //})
   });
+
 });
 //重构函数
 //页面点击
@@ -455,6 +469,8 @@ $('#updatePage').on('click',function(e){
   });
   $('#showStage').on('click','.operate a[href="delete"]',function(e){
     e.preventDefault();
+    console.log($(this));
+    var isdelete = confirm("是否确认删除所选项");
     var page=$('.pager li.active').children('a').attr('href');
     var checkID=$('tbody input');
     var tid=[];
@@ -464,6 +480,7 @@ $('#updatePage').on('click',function(e){
       }
     }
     if(tid.length>0){
+      alser("123");
       $.ajax({
         url:`data/delete.php`,
         data:`tid1=${tid[0]}&tid2=${tid[1]}&tid3=${tid[2]}&tid4=${tid[3]}&tid5=${tid[4]}&tid6=${tid[5]}&tid7=${tid[6]}&tid8=${tid[7]}`,
@@ -472,33 +489,9 @@ $('#updatePage').on('click',function(e){
         }
       });
     }else{
+      conosle.log("321");
       $('.jump').addClass('jumpout');
     }
-    //$.ajax({
-    //  //tid1=${tid[0]}&tid2=${tid[1]}&tid3=${tid[2]}&tid4=${tid[3]}&tid5=${tid[4]}&tid6=${tid[5]}&tid7=${tid[6]}&tid8=${tid[8]}
-    //  url:`data/delete.php?tid1=${tid[0]}&tid2=${tid[1]}&tid3=${tid[2]}&tid4=${tid[3]}&tid5=${tid[4]}&tid6=${tid[5]}&tid7=${tid[6]}&tid8=${tid[7]}`,
-    //  success:function(){
-    //    update(page);
-    //  },
-    //  error:function(){
-    //    console.log(error);
-    //  }
-    //})
-    //var xhr=new XMLHttpRequest();
-    //xhr.onreadystateresponse=function(){
-    //  if (xhr.readyState===4)
-    //  {
-    //    if (xhr.status===200)
-    //    {
-    //      doResponse();
-    //    }
-    //  }
-    //}
-    //xhr.open('GET',`data/delete.php?tid1=${tid[0]}&tid2=${tid[1]}&tid3=${tid[2]}&tid4=${tid[3]}&tid5=${tid[4]}&tid6=${tid[5]}&tid7=${tid[6]}&tid8=${tid[7]}`,true);
-    //xhr.send(null);
-    //function doResponse(){
-    //  console.log('error');
-    //}
   });
   $('#showStage').on('click','tbody .searchdetail a',function(e){
     e.preventDefault();

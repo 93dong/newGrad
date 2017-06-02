@@ -1,5 +1,4 @@
  var CommonAjax = (function(){
-    var serviceUrl="ss";
     var ajax = function(data){
         $.ajax({
             type : data.type ? data.type : 'POST',
