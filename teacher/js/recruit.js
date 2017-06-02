@@ -8,6 +8,16 @@ $(".showMessage").load('data/recruit.php',function(){
     }else{
         recruit.user();
     }
+    //判断登陆状态
+    (function(){
+        var userName=window.sessionStorage['teacherId'];
+        if(!userName){
+            location.href='login.html';
+        }
+        //if (!$('#logo .user').has('span')){
+        //	location.href='login.html';
+        //}
+    })();
 });
 var recruit = (function(){
     var userDom = '<ul class="messageWindow"></ul>';
@@ -206,7 +216,7 @@ var recruitDetail = (function(){
         $("p.apply").on("click",function(){
           var data={};
           data.url="data/apply.php";
-          var userId = $('.navigation ul').attr("data-id");
+          var userId = window.sessionStorage["teacherId"];
           data.params = "rid="+ridNum+"&uid="+userId;
           data.successF = function(returnData){
               console.log(123);
@@ -285,12 +295,12 @@ var recruitAdd = (function(){
             var data={};
             data.url="data/recruitadd.php";
             data.params = $(".recruitAdd").serialize();
-            var id= $('.navigation ul').attr("data-id");
+            var id= window.sessionStorage["teacherId"];
             var time = Number(new Date());
             data.params +='&id='+id+'&time='+time;
             data.successF = function(returnData){
-                console.log(123);
                 console.log(returnData);
+                recruit.manager();
             };
             data.errorF = function(returnData){
                 console.log(321);

@@ -36,7 +36,6 @@
 	$result = mysqli_query($conn,$sql);
 
 	$resquestid = mysqli_insert_id($conn);
-	echo ($resquestid);
 
 	$sql = "SELECT * FROM xt_user WHERE teacherId='$id'";
 	$result = mysqli_query($conn,$sql);

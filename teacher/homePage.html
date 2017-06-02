@@ -41,5 +41,17 @@
 		<script src="js/jquery-1.11.3.js"></script>
 		<script src="js/head.js"></script>
 		<script src="js/left.js"></script>
+		<script>
+			//判断登陆状态
+			(function(){
+				var userName=window.sessionStorage['teacherId'];
+				if(!userName){
+					location.href='login.html';
+				}
+				//if (!$('#logo .user').has('span')){
+				//	location.href='login.html';
+				//}
+			})();
+		</script>
 	</body>
 </html>

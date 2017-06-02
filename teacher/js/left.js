@@ -18,14 +18,14 @@ $(".navigation").load('data/left.php',function(){
 		case "recruit" :$("li[data-name='recruit']").addClass("navsel");break;
 	}
 	//绑定下拉列表事件
-	$('#allPage').on('click',function(e){
+	/*$('#allPage').on('click',function(e){
 		console.log("all");
 		e.preventDefault();
 		$(this).addClass('navsel').siblings('li').removeClass('navsel');
 		$('#showStage').load('data/all.php',function(){
 			fresh();
 		});
-	});
+	});*/
 
 	$('#addPage').on('click',function(e){
 		console.log("tianjia");

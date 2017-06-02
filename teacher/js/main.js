@@ -1,13 +1,12 @@
 //判断登陆状态
 (function(){
-  //var userName=window.sessionStorage['uname']||window.localStorage['uname'];
-  //var userPwd=window.sessionStorage['upwd']||window.localStorage['upwd'];
-  //if(!userName){
-  //  location.href='login.html';
-  //}
-  if (!$('#logo .user').has('span')){
+  var userName=window.sessionStorage['teacherId'];
+  if(!userName){
     location.href='login.html';
   }
+  //if (!$('#logo .user').has('span')){
+  //	location.href='login.html';
+  //}
 })();
 //加载首尾，主体
 $('#showStage').load('data/all.php',function(){
@@ -19,14 +18,14 @@ $('#showStage').load('data/all.php',function(){
         var data=message.code;
         $.each(data,function(i,p){
           html+=`
-									<li>
+									<li class="teacherList" data-id="${p.tid}">
 									<dl>
 										<dt><img src="${p.pic}" alt=""/></dt>
 										<dl>
 											<ul>
 												<li>姓名：<span data-name="name">${p.tname}</span></li>
 												<li>系别：<span data-name="categary">${p.cname}</span></li>
-												<li class="detail"><a href="#">详情</a></li>
+												<li class="teacherdetail"><a href="#">详情</a></li>
 											</ul>
 										</dl>
 									</dl>
@@ -167,11 +166,71 @@ $('#showStage').load('data/all.php',function(){
   $('#showStage').on('mouseleave','.selectOpt div',function(){
     $(this).removeClass('out');
   });
-  $('#showstage').on('click','.detail a',function(){
-    //$.ajax({
-    //  url:'data/detail.php',
-    //  success:function(){}
-    //})
+  $('#showStage').on('click','.teacherdetail>a',function(e){
+      e.preventDefault();
+      var userid = $(this).closest(".teacherList").attr("data-id");
+      $.ajax({
+      url:`data/detail.php?tid=${userid}`,
+      success:function(data){
+        var detail=data.code;
+        var categaryname=data.categaryname.cname;
+        var html=`<div class="userdetail">
+					<div class="imgShow">
+					<img src="${detail.pic}" alt=""/>
+					</div>
+					<form id="updatedetail" method="post" action="data/add.php" enctype="multipart/form-data">
+					<ul class="detaillist">
+            <li>姓名：</li>
+            <li>
+            <i>${detail.tname}</i>
+            <input type="text" name="tname" class="modification" autofocus>
+            </li>
+            <li>民族：</li>
+            <li>
+              <i>${detail.tnation}</i>
+              <input type="text" name="tnation" class="modification" autofocus>
+            </li>
+            <li>性别：</li>
+            <li>
+              <i>${detail.tgender}</i>
+              <input type="text" name="tgender" class="modification" autofocus>
+            </li>
+            <li>年龄：</li>
+            <li>
+              <i>${detail.tage}</i>
+              <input type="text" name="tage" class="modification" autofocus>
+            </li>
+            <li>院系：</li>
+            <li>
+              <i>${categaryname}</i>
+              <input type="text" name="categaryID" class="modification" autofocus>
+            </li>
+            <li>任教年限：</li>
+            <li>
+              <i>${detail.tyear}</i>
+              <input type="text" name="tyear" class="modification" autofocus>
+            </li>
+            <li>联系方式：</li>
+            <li>
+              <i>${detail.tphone}</i>
+              <input type="text" name="tphone" class="modification" autofocus>
+            </li>
+            <li>毕业院校：</li>
+            <li>
+              <i>${detail.gradSchool}</i>
+              <input type="text" name="gradSchool" class="modification" autofocus>
+            </li>
+						</ul>
+					</form>
+				</div>
+				<p class="affirmBtn"><a id="returnmain" href="#">返回</a></p>`;
+        $('#showStage').html(html);
+      }
+    });
+      $('#showStage').on('click','.affirmBtn #returnmain',function(e){
+        e.preventDefault();
+        location.href='main.html';
+      });
   });
 
 });
@@ -179,12 +238,12 @@ $('#showStage').load('data/all.php',function(){
 //页面点击
 
 $('#allPage').on('click',function(e){
-  console.log("all");
   e.preventDefault();
   $(this).addClass('navsel').siblings('li').removeClass('navsel');
   $('#showStage').load('data/all.php',function(){
     fresh();
   });
+
 });
 $('#addPage').on('click',function(e){
   console.log("tianjia");
@@ -363,7 +422,7 @@ $('#addPage').on('click',function(e){
 
   })
 });
-$('#updatePage').on('click',function(e){
+/*$('#updatePage').on('click',function(e){
   console.log("update");
   e.preventDefault();
   $(this).addClass('navsel').siblings('li').removeClass('navsel');
@@ -604,9 +663,8 @@ $('#updatePage').on('click',function(e){
       })
     })
   })
-});
+});*/
 $('#searchPage').on('click',function(e){
-  console.log("search");
   e.preventDefault();
   $(this).addClass('navsel').siblings('li').removeClass('navsel');
   var html=`<form class="find">

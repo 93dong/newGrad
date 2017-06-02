@@ -1,12 +1,20 @@
 $(".departmentDetail").load('data/department.php',function(){
-//$(".departmentDetail").load(function(){
+    //判断登陆状态
+    (function(){
+        var userName=window.sessionStorage['teacherId'];
+        if(!userName){
+            location.href='login.html';
+        }
+        //if (!$('#logo .user').has('span')){
+        //	location.href='login.html';
+        //}
+    })();
     var admin = window.sessionStorage["upower"];
     var teacherId = window.sessionStorage["teacherId"];
     if(admin==0){
        manager.managerUser();
     }else{
         normal.normalUser();
-
     }
 });
 var normal = (function(){
@@ -55,7 +63,6 @@ var manager = (function(){
         data.errorF=function(){
             console.log("error");
         };
-        alert(1);
         CommonAjax.ajax(data);
         //$(".departmentDetail").html(str);
     };
@@ -206,6 +213,7 @@ var bindEvent=(function(){
             data.params = "sel="+arr+"&cid="+cid+"&update=1";
             data.successF = function(returnData){
                console.log(returnData);
+                alert("修改成功");
             };
             data.errorF = function(){
                 console.log("error");

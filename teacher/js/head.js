@@ -43,11 +43,13 @@ $('#header').load('data/header.php',function(){
 			url:'data/clearsession.php?state=1',
 			success:function(data){
 				if (data.code==1){
-
+					window.sessionStorage.removeItem('teacherId');
+					window.sessionStorage.removeItem('upower');
 					location.href='login.html';
 				}
 			}
 		});
+
 
 	});
 	$('.user').on('click','a',function(e){
@@ -64,21 +66,25 @@ $('#header').load('data/header.php',function(){
 	//$(".sessionData").remove();
 });
 $(".navigation").load('data/left.php',function(){
-	//var pathName = $(window).location;
-	//if(pathName.indexOf("main")!=-1){
-	//	$(".navigation").find("li:nth-child(2)").addClass("navsel");
-	//}
-	//if(pathName.indexOf("department")!=-1){
-	//	$(".navigation").find("li:nth-child(1)").addClass("navsel");
-	//}
-	//if(pathName.indexOf("recruit")!=-1){
-	//	$(".navigation").find("li:nth-child(3)").addClass("navsel");
-	//}
+	var pathName = window.location.pathname;
+	console.log(pathName);
+	if(pathName.indexOf("main")!=-1){
+		$(".navigation").find("li[data-name='main']").addClass("navsel");
+	}
+	if(pathName.indexOf("department")!=-1){
+		$(".navigation").find("li[data-name='department']").addClass("navsel");
+	}
+	if(pathName.indexOf("recruit")!=-1){
+		$(".navigation").find("li[data-name='recruit']").addClass("navsel");
+	}
 	$(".slideDown").hover(function(event) {
 		$(this).children('.slideList').slideDown();
 	},function(){
 		$(this).children('.slideList').slideUp();
 	});
+	//$(".navigation>ul").on("click","li",function(){
+	//	$(this).addClass("navsel").siblings("li").removeClass("navsel");
+	//})
 
 });
 $('#footer').load('data/footer.php');

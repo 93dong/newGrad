@@ -1,4 +1,14 @@
 $(".navigation").load('data/leftSetting.php',function(){
+    //判断登陆状态
+    (function(){
+        var userName=window.sessionStorage['teacherId'];
+        if(!userName){
+            location.href='login.html';
+        }
+        //if (!$('#logo .user').has('span')){
+        //	location.href='login.html';
+        //}
+    })();
     $(".navigation").on("click","li",function(e){
         e.preventDefault();
         $(this).addClass("navsel");
